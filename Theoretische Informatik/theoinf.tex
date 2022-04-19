@@ -1,0 +1,353 @@
+\documentclass{scrreprt}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amstext}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor=blue,
+  pdfborderstyle={/S/U/W 0}
+}
+\title{\textbf{Theoretische Informatik}}
+\author{\href{https://github.com/bircni}{\color{black}github/bircni}}
+\date{}
+\begin{document}
+\pagenumbering{gobble}  
+\maketitle
+\pagebreak
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+%\renewcommand{\cftdot}{}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Seite}\par}
+\pagebreak
+\pagenumbering{arabic}
+\chapter{Mathematische Grundbegriffe}
+\section{Mengen}
+\begin{itemize}
+    \item Eigenschaften von Mengen
+    \\Eine Menge ist eine Sammlung von Elementen, diese können alles mögliche sein.
+    \\Wesentliche Eigenschaften von Mengen:
+    \begin{itemize}
+        \item Mengen haben keine Anordnungsreihenfolge
+        \item Ein Element kann höchstens einmal in einer Menge enthalten sein
+        \\Bsp. ${a,a,b}={a,b}$
+    \end{itemize}
+    \item Grundmengen von Zahlen
+    \begin{itemize}
+        \item $\mathbb{N}$: Natürliche Zahlen
+        \item $\mathbb{Z}$: Ganze Zahlen
+        \item $\mathbb{Q}$: Rationale Zahlen
+        \item $\mathbb{R}$: Reelle Zahlen
+    \end{itemize}
+    \item Mengenoperationen
+    \begin{itemize}
+        \item $\emptyset$: leere Menge
+        \item $x \in A$: x ist Element der Menge A
+        \item $|A|$: Kardinalität der Menge, bzw. Anzahl der Elemente
+        \item $A \subseteq B$: A ist Teilmenge von B oder gleich der Menge von B
+        \item $A \subset B$: Menge A ist echt in Menge B enthalten
+        \item $A \cup B$: \textbf{Vereinigung:} Menge aller Elemente in A oder B
+        \item $A \cap B$: \textbf{Schnittmenge:} Menge aller Elemente, sowohl in A als auch in B
+        \item $A \backslash B$: \textbf{Differenzmenge:} alle Elemente, die in A aber nicht in B enthalten sind
+        \item $A \times B$: \textbf{kartesisches Produkt:} Menge aller Paare, die aus A und B gebildet werden können
+        \item $\mathcal{A}$: \textbf{Potenzmenge:} Menge aller Teilmengen von A
+    \end{itemize}
+    \item Kardinalität der Potenzmenge
+    \\Für die Potenzmenge $\mathcal{M}$  einer endlichen Menge M gilt: $|\mathcal{M}| = 2^{|M|}$
+\end{itemize}
+\section{Relationen}
+Eine Relation ist eine Beziehung zwischen Elementen einer Menge.
+\\Eine zweistellige Relation R über einer Grundmenge M ist eine Menge von Paaren (x,y)
+mit $x \in M$ und $y \in M$, d.h. $R \subseteq M \times M$
+\section{Funktionen}
+\begin{itemize}
+    \item Eine Funktion $f: A \rightarrow B$ ist eine zweistellige Relation $f \subseteq A \times B$ mit der Eigenschaft:
+    \\$(a,b_{1}) \in f \and (a,b_{2}) \in f \Rightarrow b_{1}=b_{2}$
+    \item Ist $(a,b) \in f$, dann heißt b Funktionswert zu a, $f(a)=b$
+    \item Eine Funktion $f:A \rightarrow B$ heißt \textbf{total}, wenn es für jedes Argument $a \in A$ einen Funktionswert
+    $f(a)=b \in B$ gibt. Sonst heißt die Funktion \textbf{partiell}.
+    \item Gibt es für ein $a \in A$ keinen Funktionswert , dann ist f an dieser Stelle \textbf{undefiniert} $f(a)=\perp$
+\end{itemize}
+\section{Unendliche Mengen}
+\begin{itemize}
+    \item \textbf{abzählbar unendlich}: Gleich mächtig, wie die Menge der natürlichen Zahlen.
+    \\Also: für jedes Element gibt es eine Position und für jede Position i gibt es auch einen Wert $m_{i} \in M$
+    \item \textbf{überabzählbar unendlich}: unendlich und nicht abzählbare Menge
+    \\Keine 1-zu-1-Zuordnung zu den natürlichen Zahlen
+    \\Bsp: Die Menge der unendlich langen 0/1 Folgen, die Potenzmenge der natürlichen Zahlen
+\end{itemize}
+\pagebreak
+\chapter{Grundbegriffe der Graphentheorie}
+\section{Gerichtete Graphen}
+\subsection{Definition}
+\begin{itemize}
+    \item Ein gerichteter Graph $G = (V,E)$ besteht aus
+    \\V \hspace{1,5cm} Menge von Knoten
+    \\$E \subseteq V \times V$ Menge von Kanten
+    \item Für eine Kante $e = (u,v)$ ist u der Ausgangs- und v der Zielknoten
+    \item Existitert eine Kante $e = (u,v)$, dann ist v ein Nachbar von u. Sie sind adjazent.
+    \item Eine Kante mit gleichem Ausgangs- und Zielknoten heißt Schlinge/Schleife.
+\end{itemize}
+\subsection{Diagrammdarstellung von Graphen}
+\begin{itemize}
+    \item Knoten werden als Kreise dargestellt.
+    \item Kanten werden als Pfeil vom Ausgangs- zum Zielknoten dargestellt.
+    \item Die Positionierung von Knoten ist irrelevant, Kanten müssen keine geraden Linien sein.
+\end{itemize}
+\subsection{Weitere Darstellungsmöglichkeiten von Graphen}
+Graphen können als Adjazenzmatrix oder in Adjazenzlisten dargestellt werden:\\
+\includegraphics[width=0.8\textwidth]{"graphics/adjazenz"}
+\subsection{Knotengrad}
+Für einen Knoten eines gerichteten Graphen $G=(V,E)$ ist
+\begin{itemize}
+    \item der \textbf{Eingangsgrad} die Anzahl der Zielknoten v
+    \item der \textbf{Ausgangsgrad} die Anzahl der Ausgangsknoten v
+    \item der \textbf{Grad} die Summe von Ausgangsgrad und Eingangsgrad von v
+\end{itemize}
+\section{Ungerichtete Graphen}
+\subsection{Definition}
+\begin{itemize}
+    \item Ein ungerichteter Graph $G=(V,E)$ besteht aus einer Knotenmenge V und einer Kantenmenge E
+    \item Der Grad eines Knotens ist die Anzahl der von v ausgehenden Kanten.
+    \\(Schlingen werden doppelt gezählt)
+\end{itemize}
+\subsection{Vollständige Graphen}
+Ein ungerichteter Graph heißt \textbf{vollständiger Graph}, wenn es zw. je zwei verschiedenen Knoten eine Kante gibt.\\
+\includegraphics[width=0.8\textwidth]{"graphics/vollst-Graph"}
+\\
+Ein vollständiger Graph mit \textbf{n} Knoten hat $\frac{n(n-1)}{2}$ Kanten.
+\subsection{Bipartite Graphen}
+\includegraphics[width=1\textwidth]{"graphics/bipartit"}
+\pagebreak
+\subsection{Planare Graphen}
+\textbf{Definition:}
+\\Ein Graph G heißt \textbf{planar}, wenn er in einer Ebene so gezeichnet werden kann, dass sich keine Kanten kreuzen.
+\\\textbf{Kuratowski-Graphen}
+\\\includegraphics[width=1\textwidth]{"graphics/kuratowski"}
+\pagebreak
+\section{Wege, Zyklen und Kreise}
+\subsection{Definition}
+\begin{itemize}
+    \item Ein \textbf{Zyklus} ist ein Weg der Länge n>0 - Ausgangs und Endknoten stimmen überein
+    \item Ein \textbf{Kreis} ist ein Zyklus, bei dem kein Knoten doppelt besucht wird
+    \item Ein gerichteter Graph heißt \textbf{azyklischer Graph}, wenn er keinen Zyklus enthält
+\end{itemize}
+\section{Zusammenhang}
+\subsection{Zusammenhang bei ungerichteten Graphen}
+Ein ungerichteter Graph heißt \textbf{zusammenhängend}, wenn es von jedem Knoten zu jedem anderen mind. einen Weg gibt.
+\\Ein Teilgraph des ungerichteten Graphen heißt \textbf{Zusammenhangskomponente}, wenn folgende Bedingungen gelten:
+\begin{itemize}
+    \item G' ist zusammenhängend
+    \item G hat keinen größeren Teilgraphen G'', der zusammenhängend ist und G' als Teilgraph enthält 
+\end{itemize}
+Die Knotenmenge von G' ist eine Teilmenge der Knotenmenge von G
+\subsection{Zusammenhang bei gerichteten Graphen}
+\textbf{stark zusammenhängend}: für jede Kombination von $v_{1},v_{2}$ gibt es jeweils einen Weg
+\\\textbf{(schwach) zusammenhängend}: wenn er als ungerichteter Graph zusammenhängend wäre
+\section{Euler-Zyklen und -Wege}
+\subsection{Definition}
+\begin{itemize}
+    \item Ein \textbf{Euler-Weg} für G ist ein Weg in dem jede Kante genau einmal durchlaufen wird
+    \item Ein \textbf{Euler-Zyklus} für G ist ein Zyklus in dem jede Kante genau einmal durchlaufen wird
+    \item G hat einen \textbf{Euler-Zyklus} genau dann, wenn alle Knoten einen \textbf{geraden Grad} haben
+    \item G hat einen \textbf{Euler-Weg}, wenn ganu zwei Knoten ungeraden Grad haben und alle anderen einen geraden
+\end{itemize}
+\section{Hamilton-Kreise}
+Ein Zyklus, bei dem jeder Knoten genau einmal besucht wird, nennt man \textbf{Hamilton-Kreis}.
+\section{Bäume}
+\subsection{Definition}
+Ein Baum ist ein ungerichterter, zusammenhängender Graph ohne Schlingen.
+\\Alle Knoten mit Grad 1 nennt man \textbf{Blätter} des Baums, die anderen heißen \textbf{innere Knoten}
+\\Jeder nicht leere Baum mit \textbf{n Knoten} hat \textbf{n-1 Kanten}
+\subsection{Spannbäume}
+Ein Spannbaum ist ein Teilgraph eines ungerichteten Graphen, der ein Baum ist und alle Knoten dieses Graphen enthält.
+\\Spannbäume existieren nur in zusammenhängenden Graphen.
+\subsection{Wurzelbäume}
+Ein gewurzelter Baum hat einen ausgezeichneten Knoten als \textbf{Wurzel}
+\\Jeder Knoten kann beliebig viele Nachfolger haben, diese nennt man Kinder
+\\Jeder Knoten hat genau einen Elternknoten
+\\\textbf{Blätter} sind Knoten ohne Kinder, \textbf{innere Knoten} sind Knoten mit Kindern
+\\\textbf{Definition}:\\
+Ein gerichteter, zusammenhängender, azyklischer Graph ist ein Wurzelbaum, wenn
+\begin{itemize}
+    \item es genau einen Knoten w mit Eingangsgrad 0 gibt (Wurzel)
+    \item alle anderen Knoten den Eingangsgrad 1 haben
+\end{itemize}
+\subsection{Tiefe von Knoten und Höhe von Bäumen}
+Die \textbf{Tiefe} eines Knoten ist die Länge des Pfades vom Wurzelknoten zum Knoten k
+\\Ein leerer Baum hat die Höhe h=0
+\\Ein Baum aus einem einzigen Knoten hat die Höhe h=1\\
+\includegraphics[width=1\textwidth]{"graphics/hoehe"}
+\section{Binärbäume}
+Ein Binärbaum ist ein Wurzelbaum, dessen Knoten maximal den Ausgangsgrad 2 haben,
+d.h. ein Knoten hat maximal 2 Kinder
+\subsection{Vollständige Binärbäume}
+Ein Binärbaum heißt \textbf{vollständig}, wenn
+\begin{itemize}
+    \item alle innere Knoten den Ausgangsgrad 2 haben
+    \item alle Blätter die gleiche Tiefe haben
+\end{itemize}
+\includegraphics[width=0.6\textwidth]{"graphics/vollBin"}
+\\\textbf{Eigenschaften:}
+\\Ein vollständiger Binärbaum der Höhe $h>0$ hat
+\begin{itemize}
+    \item \textbf{$2^{(h-1)}$ Blätter}
+    \item \textbf{$2^{h}-1$ Knoten}
+\end{itemize}
+\subsection{Traversierung von Binärbäumen}
+\begin{itemize}
+    \item Preorder-Traversierung (W-L-R)
+    \item Inorder-Traversierung (L-W-R)
+    \item Postorder-Traversierung (L-R-W)
+\end{itemize}
+\pagebreak
+\chapter{Formale Sprachen}
+\section{Alphabete und Wörter}
+Ein \textbf{Alphabet $\sum$} ist eine endliche, nicht leere Menge von Zeichen.
+\subsection{Wörter}
+\textbf{Definition}
+\begin{itemize}
+    \item Ein Wort über einem Alphabet ist eine endlich lange Folge von Zeichen aus $\sum$
+    \item $|w|$ bezeichnet die Länge des Worts w
+    \item $\epsilon$ bezeichnet das leere Wort mit Länge 0, $|\epsilon|=0$
+    \item $|w|_{a}$ bezeichnet die Anzahl der Vorkommen des Zeichens a in w
+    \item $\sum^{*}$ bezeichnet die Menge aller Wörter, die mit Zeichen von $\sum$ gebildet werden können
+\end{itemize}
+\subsection{Konkatenation}
+Die Konkatenation (Aneinanderhängen) von zwei Wörter wird als $v \cdot w$ ($vw$) notiert.
+\begin{itemize}
+    \item \textbf{Assoziativität}:
+    \\$u \cdot (v \cdot w) = (u \cdot v) \cdot w$
+    \item $\epsilon$ ist \textbf{neutrales Element}:
+    \\$\epsilon \cdot w = w \cdot \epsilon = w$
+    \item Addition der Längen:
+    \\$|v \cdot w| = |v| + |w|$
+    \item \textbf{n-fache Konkatenation}:
+    \\$w^{0} = \epsilon$
+    \\$w^{n} = w \cdot w^{n-1}$ für $n > 0$
+    \\$|w^{n}| = n \cdot |w|$
+\end{itemize}
+\section{Sprachen}
+Die \textbf{Syntax} einer Sprache beschreibt die Regeln wie "Äußerungen" der Sprache gebildet werden können.
+\\Die \textbf{Semantik} beschreibt die Bedeutung der formulierbaren Äußerung.
+\\Die \textbf{Pragmatik} beschäftigt sich mit der Nutzung der Sprache.
+\\Eine Sprache L über dem Alphabet $\sum$ ist eine Menge von Wörtern über $\sum$ \\
+\includegraphics[width=1\textwidth]{"graphics/sprache"}
+\subsection{Operationen für Sprachen}
+\textbf{Definition}
+\begin{itemize}
+    \item Die \textbf{Konkatenation $L_{1} \cdot L_{2}$} zweier Sprachen $L_{1}$ und $L_{2}$ ist
+    \\$L_{1} \cdot L_{2} = {vw | v \in L_{1}, w \in L_{2}}$
+    \item Für eine Sprache L ist $L^{n}$ wie folgt definiert:
+    \\$L^{0} = {\epsilon}$
+    \\$L^{n} = L \cdot L^{n-1}$, für $n>0$
+    \item Die \textbf{Kleene'sche Hülle} $L^{*}$ einer Sprache L ist definiert durchlaufen
+    \\$L^{*} = L^{0} \cup L^{1} \cup L^{2} \cup ...$
+\end{itemize}
+\section{Exkurs: XML}
+\textbf{Serialisierung} = Abbildung strukturierter Daten in eiene sequentielle Darstellungsform
+\begin{itemize}
+    \item \textbf{XHTML}: Beschreibung von Web-Seiten
+    \item \textbf{SVG}: zweidimensionale Vektorgrafik
+    \item \textbf{ODF}: genormtes Austauschformat für Bürodokumente
+    \item \textbf{MathML}: Dokumentenformat zur Darstellung mathematischer Formeln
+    \item \textbf{MusicXML}: offenes Dateiformat zum Austausch von Musiknoten
+    \item \textbf{WSDL}: Schnittstellen-Beschreibung für Web-Services
+\end{itemize}
+\subsection{Wohlgeformtheit}
+Ein Text ist ein wohlgeformter XML-Text, wenn er folgende Regeln erfüllt:
+\begin{itemize}
+    \item Ein XML-Text besteht aus genau einem XML-Element
+    \item Ein XML-Element beginnt mit einem Anfangstag <tag> und endet mit dem gleichnamigen Endtag </tag>
+    \item Elementare Texte können beliebige Zeichenfolgen sein, die aber keine Tags enthalten
+\end{itemize}
+\subsection{Weitere XML-Details}
+\includegraphics[width=1\textwidth]{"graphics/XML-tag"}
+\pagebreak
+\chapter{Reguläre Ausdrücke}
+\section{Syntax reguläre Ausdrücke}
+Die Menge der \textbf{regulären Ausdrücke} über einem Alphabet $\epsilon$ ist rekursiv so definiert:
+\\Folgendes sind elementare reguläre Ausdrücke:
+\begin{itemize}
+    \item [(1)] $\emptyset$
+    \item [(2)] $\epsilon$
+    \item [(3)] \textbf{a} für jedes Zeichen $a \in \epsilon$
+\end{itemize}
+Sind R und S beliebige reguläre Ausdrücke, dann sind auch folgendes reguläre Ausdrücke:
+\begin{itemize}
+    \item [(4)] $R \cdot S$
+    \item [(5)] $R | S$
+    \item [(6)] $R^{*}$
+    \item [(7)] $(R)$
+\end{itemize}
+\textbf{Notationskonvention}
+\begin{itemize}
+    \item Operator $^{*}$ bindet stärker als Operator $\cdot$
+    \item Operator $\cdot$ bindet stärker als Operator $|$
+\end{itemize}
+\section{Semantik reguläre Ausdrücke}
+Die von einem regulären Ausdruck R dargestellte Sprache L(R) ist folgendermaßen definiert:
+\begin{itemize}
+    \item [(1)] $L(\emptyset) = {}$ \hspace{1,6cm} // leere Sprache, enthält gar kein Wort
+    \item [(2)] $L(\epsilon) = {\epsilon}$ \hspace{1,4cm} // Sprache, die nur das leere Wort enthält
+    \item [(3)] $L(a) = {a}$ \hspace{1,3cm} // Sprache, die nur das Wort aus dem einzelnen Zeichen a enthält
+    \item [(4)] Ist $L(R)=L_{1}$ und $L(S)=L_{2}$ dann ist $L(R \cdot S)=L_{1} \cdot L_{2}$
+    \item [(5)] Ist $L(R)=L_{1}$ und $L(S)=L_{2}$ dann ist $L(R | S)=L_{1} \cup L_{2}$
+    \item [(6)] Ist $L(R)=L_{1}$ dann ist $L(R^{*})=L_{1}^{*}$
+    \item [(7)] Ist $L(R)=L_{1}$ dann ist $L((R))=L_{1}$
+\end{itemize}
+Die Bedeutung zusammengesetzter Ausdrücke kann so erklärt werden:
+\begin{itemize}
+    \item \textbf{$R|S$} ist die Menge aller Wörter, die in der Sprache R oder in der Sprache S enthalten sind.
+    Sprechweise: "R oder S"
+    \item \textbf{RS} ist die Menge aller Wörter, so dass der erste Teil des Worts in der Sprache von R liegt und der Rest in S
+    \item \textbf{$R^{*}$} ist die Menge aller Wörter $w=u_{1}u_{2}...u_{n}$ die sich aus bel. vielen Teilwörtern zusammensetzen
+\end{itemize}
+\textbf{$R^{+}$} ist die Abkürzung für \textbf{$RR^{*}$}
+\textbf{$R?$} ist die Abkürzung für \textbf{$R|\epsilon$}
+\section{Äquivalenz regulärer Ausdrücke}
+Zwei reguläre Ausdrücke R und S heißen äquivalent, falls $L(R) = L(S)$, d.h. wenn beide Ausdrücke die gleiche Sprache darstellen.
+\\\textbf{Eigenschaften}
+\\Für beliebige reguläre Ausdrücke R, S und T gilt:
+\begin{itemize}
+    \item $R|S = S|R$
+    \item $(R|S)|T = R|(S|T)$
+    \item $RS|RT = R(S|T)$
+    \item $RT|ST = (R|S)T$
+    \item $R|R = R$
+    \item $R| \emptyset = \emptyset|R = R$
+    \item $(RS)T = R(ST)$
+    \item $R \epsilon = \epsilon R = R$
+    \item $R \emptyset = \emptyset R = \emptyset$
+    \item $R^{**} = R^{*}$
+    \item $R^{*} = \epsilon | RR^{*}$ bzw. $R^{*} = \epsilon | R^{+}$
+    \item $R^{*} = \epsilon | R^{*}$
+\end{itemize}
+\section{Anwendung regulärer Ausdrücke}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|l|X|l}
+    \multirow{3}{*}{\textbf{boolean} }
+            & \textbf{matches (regex)}\\
+            & prüft, ob der String entsprechend dem regulären Ausdruck regex\\
+            & aufgebaut ist.\\
+    \hline
+    \multirow{2}{*}{String}
+            & \textbf{replaceAll (String regex, String replacement)}\\
+            & ersetzt alle Vorkommen des Musters regex durch replacement\\
+    \hline
+    \multirow{2}{*}{String}
+            & \textbf{replaceFirst (String regex, String replacement)}\\
+            & ersetzt das erste Vorkommen des Musters regex durch replacement\\
+    \hline
+    \multirow{2}{*}{String []}
+            & \textbf{split} (String regex, \textbf{int limit})\\
+            & Splits this string around matches of the given regular expression\\
+\end{tabularx}
+\pagebreak
+\chapter{Kontextfreie Grammatiken}
+\end{document}

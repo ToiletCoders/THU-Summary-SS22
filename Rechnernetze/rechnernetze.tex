@@ -1,0 +1,299 @@
+\documentclass{scrreprt}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amstext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,
+  linkbordercolor=blue,
+  pdfborderstyle={/S/U/W 0}
+}
+\title{Rechnernetze}
+\author{\href{https://github.com/bircni}{\color{black}github/bircni}}
+\date{}
+\begin{document}
+%test
+\maketitle
+\section*{1. Einleitung}
+\subsection*{Datenübertragung im Internet}
+\begin{itemize}
+	\item Die Bitübertragungsschicht
+	\begin{itemize}
+		\item Bit wird in Form physikalischer Signale übertragen
+		\item Übertragungsmedien
+		\begin{itemize}
+			\item Kupferkabel - elektrische Signale
+			\item Glasfaserkabel - Lichtpulse (Itensität)
+			\item Funkwellen - Amplitude, Frequenz
+		\end{itemize}
+		\item Problem: Übertragungsfehler wegen Signalverfälschung
+	\end{itemize}
+	\item Die Sicherungsschicht
+	\begin{itemize}
+		\item Verantwortlich für zuverlässigen Datenaustausch zwischen direkt verbundenen Rechnern
+		\item Möglichkeiten: Punkt zu Punkt, Bus, Stern
+		\item Aufgaben:
+		\begin{itemize}
+			\item Framing: Generierung der Datenpakete
+			\item Fehlererkennung: Generierung der Prüfsummen
+			\item (Bus)Media-Access-Control (MAC): Wer darf wann senden?
+			\item (Stern)Hardware-Adressierung: Eindeutige Adressierung der Interfaces
+		\end{itemize}
+	\end{itemize}
+	\item Die Vermittlungsschicht (IP)
+	\begin{itemize}
+		\item IP ist optimiert für Datenübertragung über heterogene, nicht zuverlässige Netzwerke
+		\begin{itemize}
+			\item Übertragung erfolgt in Form unabhängiger Pakete
+			\item Einheitliches, übergreifendes Adressschema
+			\item Keine Mechanismen zur Fehlerbehebung
+		\end{itemize}
+		\begin{figure}[h]
+			\includegraphics[width=0.80\textwidth]{"graphics/IP"}
+			\centering
+		\end{figure}
+	\end{itemize}
+	\item Die Transportschicht (TCP)
+	\begin{itemize}
+		\item Ziel:
+		\begin{itemize}
+			\item Zuverlässigkeit des Datentransports
+			\item Sicherung der Übertragung zwischen Anwendungsprozessen
+		\end{itemize}
+		\item TCP:
+		\begin{itemize}
+			\item Anwendung übergibt Daten an die TCP-Schicht
+			\item korrekter Transport als Aufgabe von TCP
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\subsection*{ISO/OSI-Modell}
+\begin{itemize}
+	\item 7 Schichten
+	\item Jede Schicht definiert Funktionen die als Dienste der nächst höheren Schicht zu Verfügung stehen
+	\item keine Implementierungsvorgaben
+	\item höhere Schicht nutzt die Funktionen der darunter liegenden Schicht
+	\item Prinzip: "Information Hiding"
+	\item Grobstruktur:
+	\begin{itemize}
+		\item Schicht 1-3: Netz orientiert, reine Transportfunktionalitäten, Inhalt irrelevant
+		\item Schicht 4: Verbindet die Netz- und Anwendungsschicht
+		\item Schicht 5-7: Anwendungs orientiert, Festlegung des Datenaustauschs und Datenformats
+	\end{itemize}
+	\begin{figure}[h]
+		\includegraphics[width=0.55\textwidth]{"graphics/ISO"}
+		\centering
+	\end{figure}
+	\item Funktionen der Schichten:
+	\begin{enumerate}
+		\item Bitübertragungsschicht: (Bit-Repräsentation)
+		\\ermöglicht die Übertragung unstrukturierter Bitsröme; z.B. physikalische Darstellung
+		\item Sicherungsschicht: (Ethernet)
+		\\dient zur Entdeckung von Übertragungsfehlern und deren Korrektur
+		\item Vermittlungsschicht: (IP)
+		\\ermöglicht transparente Übertragung der Daten im Netzwerk (Routing)
+		\item Transportschicht: (TCP)
+		\\Sicherung der Übertragung zw. zwei Anwendungen auf versch. Rechnern
+		\item Sitzungsschicht: (Dialog-Steuerung)
+		\\sorgt für Synchronisation und den geregelten Dialogablaug zw. zwi Anwendungsprozessen (Login)
+		\item Darstellungsschicht: 
+		\\Umsetzung der Darstellungen der Informationen
+		\item Anwendungsschicht:
+		\\einzige Zugriffsmöglichkeit der Anwendungsprozesse zur Datenübertragung (Mail,DNS)
+	\end{enumerate}
+	\begin{figure}[h]
+		\includegraphics[width=0.50\textwidth]{"graphics/IOSTCP"}
+		\centering
+	\end{figure}
+	\begin{figure}[h]
+		\includegraphics[width=0.70\textwidth]{"graphics/ISO2"}
+		\centering
+	\end{figure}
+\end{itemize}
+
+\section*{2. Datenübertragung}
+\subsection*{Fourieranalyse}
+\label{sec:fourier}
+Jede periodische Funktion g(t) mit t (Zeit) und Periode T kann als Überlagerung
+von Sinus- und Cosinustermen dargestellt werden.
+$$g(t)=\frac{1}{2}a_{0}+\sum_{n=1}^{\infty}{[a_{n}cos(\omega_{n}t)+b_{n}sin(\omega_{n}t)]}$$
+$a_{n}$ und $b_{n}$ sind Fourierkoeffizienten mit $\omega_{n}=2\pi n/T $
+\\
+Der n-te Summand heißt n-te Harmonische.
+\\
+Ist g(t) der Spanungsverlust eines elektr. Signals dann ist $(a_{n}^{2}+b_{n}^{2})$ proportional
+zur Leistung, die bei der Frequenz $f_{n}$ übertragen wird.
+\\
+Beispiel-Applet: \url{https://falstad.com/fourier}
+
+\subsection*{Dämpfung D}
+\label{sec:dampf}
+Üblicherweise wird die Dämpfung in der Einheit Dezibel angegeben
+$$D_{dB}=10*\log_{10}(P_{in}/P_{out})  [dB]$$
+$$D_{dB}=20*\log_{10}(U_{in}/U_{out})  [dB]$$
+$\rightarrow$   Unabhängig davon ob Leistung [P] oder Spannung [U] verglichen werden
+ergibt sich bei der Formel der gleiche Wert.
+Wird als Einheit dB verwendet, addieren sich die Dämpfungen einzelner Abschnitte.
+
+\subsection*{Bandbreite B}
+\label{sec:bandbreite}
+Bandbreite eines Übertragungskanals $B = f_{max}-f_{min}$
+\begin{itemize}
+	\item Frequenzbereich der ohne wesentl. Dämpfung übertragen werden kann.
+	\item $f_{max}$ und $f_{min}$ sind dadurch gegeben, dass die außen liegenden Frequenzen
+	      unter 50\% der leistungsstärksten Frequenzen liegen.
+\end{itemize}
+\begin{figure}[h]
+	\includegraphics[width=0.60\textwidth]{"graphics/Dampfung"}
+	\centering
+\end{figure}
+
+\subsection*{Nyquist-Theorem}
+Zusammenhang zwischen \hyperref[sec:bandbreite]{Bandbreite B} und der maximal möglichen
+Datenrate D eines idealen Übertragungskanals:
+$$D = 2*B*\log_{2}(N)$$
+$\rightarrow$ B = Bandbreite des Übertragungskanals in [Hz]
+\\
+$\rightarrow$ N = Anzahl der möglichen diskreten Signalstufen pro Signaländerung
+\\
+$\rightarrow$ D = Datenrate in bps (Bit pro Sekunde)
+\\\\
+Beispiel:
+\begin{itemize}
+	\item Binäres Signal mit N=2 und Übertragungskanal mit 3000Hz
+	      $\rightarrow$ maximal erreichbare Datenrate beträgt 6000 bps
+\end{itemize}
+
+\subsection*{Shannon'scher Kanalkapazitätssatz}
+\begin{itemize}
+	\item Maximale Datenrate eines realen Datenkanals
+	      \begin{itemize}
+		      \item D hängt vom "Signal-Rausch"-Abstand (SNR) ab
+		            \\$D=B*\log_{2}(1+SNR)$
+			            \\$\rightarrow$ B = Bandbreite des Übertragungskanals in [Hz]
+		            \\$\rightarrow$ $SNR = P_{S}/P_{R}$
+			            \\$P_{S}$ = mittlere Leistung im Nutzsignal
+		            \\$P_{R}$ = mittlere Leistung im Rauschsignal
+		      \item Die gebräuchliche Einheit von SNR ist [dB]
+		            \\$\rightarrow$ $(SNR)_{dB} = 10*\log_{10}(SNR)$
+	      \end{itemize}
+	\item Beispiel
+	      \begin{itemize}
+		      \item Übertragungskanal mit 3000 Hz (Telefon); $(SNR)_{dB} = 30dB$
+		            \\$\rightarrow$ $SNR = 1000$
+			            \\$\rightarrow$ $D = 3000*\log_{2}(1+1000) \approx 30000bit/s$
+	      \end{itemize}
+\end{itemize}
+
+\subsection*{Bitrate vs. Signalgeschwindigkeit}
+\begin{itemize}
+	\item Signalgeschwindigkeit: Anzahl der Signalwechsel pro Sekunde
+	      \begin{itemize}
+		      \item Die Signalgeschwindigkeit wird in Baud [Bd] angegeben
+		      \item Oft auch als "Baudrate" bezeichnet
+	      \end{itemize}
+	\item Bit-Rate: Anzahl der übertragenen Bits pro Sekunde
+	      \begin{itemize}
+		      \item Die Bitrate kann größer als die Baudrate werden
+		      \item Für binäre Signalstufe (2-Stufen-Kodierung) gilt: Bitrate = Baudrate
+		      \item Bei Nutzung einer 4-Stufen-Kodierung gilt: Bitrate = 2x Baudrate
+	      \end{itemize}
+\end{itemize}
+
+\subsection*{Die Ende-zu-Ende-Verzögerung von Datenpaketen}
+\begin{itemize}
+	\item Zeit: Datenpaketübertragung von Quell-Knoten zu Ziel-Knoten
+	\item Verzögerungsarten die zur Verzögerung beitragen:
+	      \\$$d_{end-to-end} = \sum_{i=1}^{N}{d^{j}_{nodal}}$$
+	      \begin{itemize}
+		      \item $d^{j}_{nodal}$ bezeichnet die Verzögerung in einem Knoten i
+		      \item Die Knoten-Verzögerung $d^{j}_{nodal}$ setzt sich aus folgenden Anteilen zusammen:
+		            \\$$d^{j}_{nodal} = d^{j}_{proc}+d^{j}_{queue}+d^{j}_{trans}+d^{j}_{prop}$$
+		            \begin{itemize}
+			            \item $d^{j}_{proc}$ = Verarbeitungsverzögerung (processing delay)
+			            \item $d^{j}_{queue}$ = Warteschlangenverzögerung (queuing delay)
+			            \item $d^{j}_{trans}$ = Übertragungsverzögerung (transmission delay)
+			            \item $d^{j}_{prop}$ = Ausbreitungsverzögerung (propagation delay)
+		            \end{itemize}
+	      \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\includegraphics[width=0.80\textwidth]{"graphics/Uebertragung"}
+	\centering
+\end{figure}
+
+\subsection*{Grundlegende Übertragungstechniken}
+\begin{itemize}
+	\item Digitale Eingabe, digitale Übertragung: \\\hyperref[sec:Leitungscodierung]{Digitale Leitungscodierung}
+	      \begin{itemize}
+		      \item Beispiel: Ethernet
+		            \\$\rightarrow$ Bits werden direkt als digitale Signale auf die Leitung gegeben
+			            \\$\rightarrow$ Einsatz sog. Basisband-Übertragungsverfahren
+	      \end{itemize}
+	\item Digitale Eingabe, analoge Übertragung: \\Modulationstechniken
+	      \begin{itemize}
+		      \item Beispiel: DSL-Modemstrecken
+		            \\$\rightarrow$ Binäre Daten werden über eine Trägerwelle übertragen
+			            \\$\rightarrow$ Einsatz sog. breitband-Übertragungsverfahren
+	      \end{itemize}
+\end{itemize}
+
+\subsection*{Digitale Leitungscodierung}
+\label{sec:Leitungscodierung}
+\begin{itemize}
+	\item Direkte Übertragung rechteckförmiger Signale
+	      \begin{itemize}
+		      \item Signal belegt gesamte verfügbare Bandbreite des Übertragungskanals
+	      \end{itemize}
+	\item Die Zuordnungsvorschrift Datenelement zwischen Signalelement heißt Signal- oder Leitungscodierung
+	\item Die sich ergebende Signaverläufe heißen Signalcodes oder Übertragungscodes
+	\item Erwünschte Eigenschaften von Übertragungscodes:
+	      \begin{itemize}
+		      \item Bittaktrückgewinnung
+		      \item Codierung mehrerer Bits pro Baud (pro Signalwechsel)
+		      \item Vermeidung von Gleichstromanteilen
+		      \item Erkennung von Signalfehlern auf Signalebene
+	      \end{itemize}
+	\item Beispiele: 
+		  \\
+	      \includegraphics[width=0.80\textwidth]{"graphics/NRZ"}
+	      \\
+	      \includegraphics[width=0.80\textwidth]{"graphics/Manchester"}
+	      \\
+	      \includegraphics[width=0.80\textwidth]{"graphics/4B5B"}
+	      \\
+	      \includegraphics[width=0.70\textwidth]{"graphics/uebertragungsarten"}
+	\item Synchronisation bei Bit serieller Übertragung
+	      \begin{itemize}
+		      \item Beispiel "RS-232-C"-Schnittstelle
+		    \begin{itemize}
+				\item Standart-Schnittstelle zur Übertragung alphanum. Zeichen
+				\item Sender und Empfänger sind vor Datenaustausch nicht synchronisiert
+				\\$\rightarrow$ Sender-/Empfängertakt müssen gleich sein
+				\\$\rightarrow$ Start/Stop-Verfahren - Signalisierung von Anfang/Ende einer Übertragung
+				\\$\rightarrow$ Sender-Verhalten:
+				\\ Übertragung von Daten beginnt, sobald Daten anliegen, beliebige Wartezeiten
+				\\$\rightarrow$ Empfänger-Verhalten:
+				\\Ständige Empfangsbereitschaft
+				\item Spezifikationen
+				\\$\rightarrow$ "1" Signalpegel von -3V bis -15V
+				\\$\rightarrow$ "0" Signalpegel von +3V bis +15V
+				\\$\rightarrow$ Start-Bit setzt Leitung auf "0" und startet Taktgeber des Empfängers
+				\\$\rightarrow$ Stop-Bit setzt Leitung auf "1"
+			\end{itemize}
+	      \end{itemize}
+	\item Modulationstechniken
+	\begin{itemize}
+		\item Nutzung elektromag. Wellen zur Datenübertragung
+		\begin{itemize}
+			\item Träger wird vom Sender moduliert
+			\item Empfänger demoduliert Träger und rekonstruiert Originaldaten
+		\end{itemize}
+		\item Amplitudendarstellung einer Trägerwelle
+		$$A(t) = A_{0}*sin(2\pi ft -\phi )$$
+		$A_{0}$: Amplitude; $\phi$: Phasenverschiebung;
+		\\$f=1/T=$Frequenz; $T=$Schwingungsperiode;
+	\end{itemize}
+\end{itemize}
+\end{document}
