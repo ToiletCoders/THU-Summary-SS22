@@ -1,0 +1,31 @@
+\documentclass{scrreprt}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amstext}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor=blue,
+  pdfborderstyle={/S/U/W 0}
+}
+\title{\textbf{Datenbanken}}
+\author{\href{https://github.com/bircni}{\color{black}github/bircni}}
+\date{}
+\begin{document}
+\pagenumbering{gobble}  
+\maketitle
+\pagebreak
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+%\renewcommand{\cftdot}{}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Seite}\par}
+\pagebreak
+\pagenumbering{arabic}
+\chapter{1}
+\end{document}
