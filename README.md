@@ -1,6 +1,4 @@
-# THU-Summary-SS22
- 
-Some Summaries made in 2022 @ THU
+Progress:
 
 [MCOM](MCOM) (nothing there yet 🙁)  
 [Rechnernetze](Rechnernetze) (already created some pages - not finished)  
