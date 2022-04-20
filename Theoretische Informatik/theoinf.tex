@@ -383,4 +383,23 @@ Ein Baum ist ein Ableitungsbaum zu einer kontextfreien Grammatik G für ein Wort
     \item Die Blätter des Baums sind mit einem terminalen Symbol oder mit $\epsilon$ markiert
 \end{itemize}
 Ein Wort w ist genau dann aus dem Startsymbol ableitbar, wenn ein Ableitungsbaum für das Wort w existiert. $S \Rightarrow ^{*} w$
+\subsection{Mehrdeutigkeit und Äquivalenz von Grammatiken}
+Eine kontextfreie Grammatik Fheißt mehrdeutig, wenn es für mindestens ein Wort mindestens zwei unterschiedliche Ableitungs gibt.
+\\Zwei Grammatiken sind äquivalent, wenn sie dieselbe Sprache erzeugen $L(G_{1}=L(G_{2}))$
+\subsection{Kontextfreie Sprachen}
+Eine Sprache L ist kontextfrei, wenn es eine kontextfreie Grammatik gibt, die die Sprache darstellt
+\section{Weitere Formen der Syntaxbeschreibung}
+\subsection{Backus-Naur-Form (BNF)}
+Notation:
+\begin{itemize}
+    \item In Produktionen: \textbf{::=} statt \textbf{$\rightarrow$}
+    \item Nichtterminale Symbole werden mit \textbf{(...)} geklammert
+    \item Terminale Symbole werden mit \textbf{"..."} eingeschlossen
+\end{itemize}
+\subsection{Erweiterte-Backus-Naur-Form (EBNF)}
+\includegraphics[width=0.6\textwidth]{"graphics/EBNF"}
+\subsection{Syntaxdiagramme}
+\includegraphics[width=0.75\textwidth]{"graphics/Syntaxdiagramm"}
+\subsection{Zusammenhang EBNF und Syntaxdiagramme}
+\includegraphics[width=0.7\textwidth]{"graphics/zusammenhang"}
 \end{document}
