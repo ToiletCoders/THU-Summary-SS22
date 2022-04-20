@@ -350,4 +350,37 @@ Zwei reguläre Ausdrücke R und S heißen äquivalent, falls $L(R) = L(S)$, d.h.
 \end{tabularx}
 \pagebreak
 \chapter{Kontextfreie Grammatiken}
+\section{Kontextfreie Grammatiken}
+Eine kontextfreie Grammatik $G=(N,T,P,S)$ besteht aus:
+\begin{itemize}
+    \item \textbf{N} endliche Menge von \textbf{nichtterminalen Symbolen}
+    \item \textbf{T} endliche Menge von \textbf{terminalen Symbolen}
+    \item \textbf{P} endliche Menge von \textbf{Produktionen} $L \rightarrow r$
+    \item \textbf{S} Startsymbol S$\in N$ eines der nichtterminalen Symbole
+\end{itemize}
+Beispiel:
+\begin{itemize}
+    \item $N = \{A,D,S\}$
+    \item $T=\{a,b,c,d\}$
+    \item Produktionen $=\{S \rightarrow AD, A \rightarrow aAc, A \rightarrow b, D \rightarrow dD, D \rightarrow \epsilon\}$
+    \item Startsymbol S
+\end{itemize}
+\subsection{Ableitbarkeit und Sprache einer Grammatik}
+Ableitbarkeit:
+\\w ist aus u ableitbar, wenn $u=w$ oder wenn es eine Folge von Ableitungsschritten von u nach w gibt
+\\ * = "beliebig viele" Schritte
+\\Die von $G=(N,T,P,S)$ erzeugte Sprache ist: $L(G)=\{w \in T^{*} | S \Rightarrow w\}$
+\subsection{Links- und Rechtsableitungen}
+\textbf{Linksableitung:}
+\\In jedem Ableitungsschritt wird das am weitesten links stehende nichtterminale Symbol ersetzt
+\\\textbf{Rechtsableitung}
+\\In jedem Ableitungsschritt wird das am weitesten rechts stehende nichtterminale Symbol ersetzt
+\subsection{Ableitungsbäume}
+Ein Baum ist ein Ableitungsbaum zu einer kontextfreien Grammatik G für ein Wort w, wenn:
+\begin{itemize}
+    \item Die Wurzel des Baums ist mit dem Startsymbol S markiert
+    \item Die inneren Knoten sind mit einem nichtterminalen Symbol markiert
+    \item Die Blätter des Baums sind mit einem terminalen Symbol oder mit $\epsilon$ markiert
+\end{itemize}
+Ein Wort w ist genau dann aus dem Startsymbol ableitbar, wenn ein Ableitungsbaum für das Wort w existiert. $S \Rightarrow ^{*} w$
 \end{document}
