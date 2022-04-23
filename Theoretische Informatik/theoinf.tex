@@ -7,6 +7,9 @@
 \usepackage{amsfonts}
 \usepackage{tabularx}
 \usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hypersetup{
   colorlinks=false,
@@ -403,5 +406,60 @@ Notation:
 \subsection{Zusammenhang EBNF und Syntaxdiagramme}
 \includegraphics[width=0.7\textwidth]{"graphics/zusammenhang"}
 \section{Chomsky-Grammatiken}
-%Lektion 10 -Seite 1
+\subsection{Typ-i-Grammatiken}
+Eine Chomsky-Grammatik des Typs i besteht aus:
+\begin{itemize}
+    \item einer endlichen Menge N nichtterminaler Symbole
+    \item einer endlichen Menge T terminaler Symbole ($N \cap T = \varnothing$)
+    \item einem Startsymbol $S \in N$
+\end{itemize}
+sowie einer endlichen Menge P von Produktionen des Typs i
+\begin{itemize}
+    \item \textbf{Typ 0 (uneingeschränkt)}
+    \\Produktion hat die Form \textbf{$u \rightarrow w$} mit
+    \\$u \in (N \cup T)^{*}$, $w \in (N \cup T)^{*}$ wobei $|u| \leq |w|$
+    \item \textbf{Typ 1 (kontextsensitiv, monoton)}
+    \\Produktion hat die Form \textbf{$u \rightarrow w$} mit
+    \\$u \in (N \cup T)^{*}$, $w \in (N \cup T)^{*}$ wobei $|u| \leq |w|$
+    \\Zusätzlich ist die Produktion $S \rightarrow \epsilon$ erlaubt, sofern S nicht auf der rechten Seite der Produktion vorkommt.
+    \item \textbf{Typ 2 (kontextfrei)}
+    \\Produktion hat die Form \textbf{$A \rightarrow w$} mit
+    \\$A \in N$, $w \in (N \cup T)^{*}$
+    \item \textbf{Typ 3 (rechtslinear)}
+    \\Produktionen können entweder die Form \textbf{$A \rightarrow aB$}
+    \\oder die Form \textbf{$A \rightarrow \epsilon$} haben mit $(A,B \in N, a \in T)$
+\end{itemize}
+\section{XML-Bäume}
+\subsection{Document Type Definition (DTD)}
+Eine DTD-Spezifikation hat die Form:
+\\\tab  \textlangle! DOCTYPE wurzelelement[Definition der XML-Elemente]]\textrangle
+\\Jedes XML-Element wird durch einen Eintrag definiert
+\\\tab \textlangle! ELEMENT elementname regAusdruck\textrangle
+\\Der Ausdruck "regAusdruck" beschreibt welchen Inhalt das XML-Element haben kann
+\begin{itemize}
+    \item \textit{\#PCDATA} elementarer Text, enthält keine weiteren XML-Elemente
+    \item \textit{EMPTY} leeres Element
+    \item \textit{A,B,C} Sequenz: A gefolgt von B gefolgt von C
+    \item \textit{A|B|C} alternativ A oder B oder C
+    \item \textit{$Y^{*}$} (evtl. leere) Folge von Y, beliebig oft
+    \item \textit{$Y+$} nicht-leere Folge von Y, d.h. mind einmal
+    \item \textit{A?} A ist optional
+\end{itemize}
+Ein XML-Dokument heißt \textbf{valide}, wenn es die strukturellen Vorgaben der DTD einhält.
+\pagebreak
+\chapter{Deterministische endliche Automaten}
+\section{Definition DEA}
+Ein deterministischer endlicher Automat (DEA) $A=(Z,\sum,\delta,z_{0},E)$ besteht aus:
+\begin{itemize}
+    \item [Z] endliche Menge von Zuständen
+    \item [$\sum$] Eingabealphabet
+    \item [$\delta$] Zustandsübergangsfunktion (totale Funktion)
+    \item [$z_{0}$] Startzustand ($z_{0} \in Z$)
+    \item [E] Menge von akzeptierenden Zuständen
+\end{itemize}
+\includegraphics[width=1\textwidth]{"graphics/DEA-DEF"}
+\section{Akzeptierte Sprache eines DEA}
+Die durch einen DEA $A=(Z,\sum,\delta,z_{0},E)$ akzeptierte Sprache L(A)
+\\ist die Menge $L(A)=\{w\in \sum^{*}|z_{0}\rightarrow z' \cap z' \in E\}$.
+\section{}
 \end{document}
