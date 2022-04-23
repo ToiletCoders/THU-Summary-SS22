@@ -457,9 +457,17 @@ Ein deterministischer endlicher Automat (DEA) $A=(Z,\sum,\delta,z_{0},E)$ besteh
     \item [$z_{0}$] Startzustand ($z_{0} \in Z$)
     \item [E] Menge von akzeptierenden Zuständen
 \end{itemize}
-\includegraphics[width=1\textwidth]{"graphics/DEA-DEF"}
+\includegraphics[width=0.8\textwidth]{"graphics/DEA-DEF"}
 \section{Akzeptierte Sprache eines DEA}
 Die durch einen DEA $A=(Z,\sum,\delta,z_{0},E)$ akzeptierte Sprache L(A)
 \\ist die Menge $L(A)=\{w\in \sum^{*}|z_{0}\rightarrow z' \cap z' \in E\}$.
-\section{}
+\section{Minimalautomaten}
+Ein DEA ist ein Minimalautomat falls der Automat die Sprache L akzeptiert und es keinen anderen Automaten A' gibt, der
+\begin{itemize}
+    \item äquivalent zu A ist 
+    \item weniger Zustände als A hat
+\end{itemize}
+\subsection{Äquivalenz von Zuständen}
+\includegraphics[width=1\textwidth]{"graphics/DEA-Zustand"}
+%\includegraphics[width=0.8\textwidth]{"graphics/DEA-BSP"}
 \end{document}
