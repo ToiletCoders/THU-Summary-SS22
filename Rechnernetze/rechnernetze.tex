@@ -17,6 +17,7 @@
 \maketitle
 \pagebreak
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 %\renewcommand{\cftdot}{}
 \setcounter{tocdepth}{1}
 \tableofcontents
@@ -377,7 +378,27 @@ Varianten von Sliding-Window-Protokollen:
 \begin{itemize}
 	\item "Go-Back-n"-Strategie: RWS = 1
 	\\Empfangspuffer des Empfängers kann genau ein Datensegement zwischen puffern
-	\item "Selective Repeat"-Strategie: RWS \> 1
+	\item "Selective Repeat"-Strategie: RWS $\leq$ 1
 	\\Empfangspuffer des Empfängers kann mehrere Datenrahmen zwischen puffern
 \end{itemize}
+\section{Ethernet (IEEE 802.3)}
+\includegraphics[width=0.70\textwidth]{"graphics/Ethernet-Standard"}
+\subsection{Ethernet-Funktionsprinzip}
+Alle Teilnehmer eines LANs teilen sich die Übertragungskapazität \textbf{"shared network"}
+\\Alle Stationen "sehen" alle Daten-Rahmen im LANs
+\\CSMA/CD: Medienzugriffsprotokoll für Ethernet
+\\\tab CSMA/CD: Carrier Sense Multiple Access/Collision Detect
+\\\tab Ablauf:
+\\\tab[2cm] Sendewilige Station hört Leitung
+\\\tab[2cm] Bei freier Leitung wird gesendet
+\\\tab[2cm] Während der Sendung wird überwacht, ob Datenkollision auftritt
+\\\tab[2cm] Bei Kollision: Sendung wird abgebrochen
+\\Zeitlicher Ablauf bei einer Datenkollision:
+\\\includegraphics[width=0.70\textwidth]{"graphics/CSMA"}
+\\Der Konfliktparameter K:
+\\\includegraphics[width=0.70\textwidth]{"graphics/Konfliktparameter"}
+\subsection{MAC (Ethernet)-Adresse}
+Länge: 6 Bytes bzw. 48 Bits
+\\Broadcast-Adresse: Alle Bits der LAN-Adresse sind auf 1 gesetzt
+%Kapitel 3 Seite 40
 \end{document}
