@@ -354,4 +354,30 @@ Fehlererkennungscodes:
 	\item Cyclic Redundancy Check (CRC)
 	\\\includegraphics[width=0.80\textwidth]{"graphics/CRC"}
 \end{itemize}
+\section{Prinzipien der gesicherten Datenübertragung}
+Grundprinzip der gesicherten Übertragung:
+\begin{itemize}
+	\item Prinzip der positiven Bestätigung (ACK+):
+	\\erfolgreicher Erhalt wird mit einem "ACK+"-Paket bestätigt
+	\\Nach Versand des Pakets wird auf das ACK+ gewartet
+	\\Falls Wartezeitüberschritten, erfolgt Sendewiederholung
+	\item Sendepuffer
+	\\Datensegmente können verloren gesicherten
+	\\Sender muss eine Kopie der Daten halten
+	\item Sequenz- \& Bestätigungsnummern:
+	\\Datensegmente können verdoppelt werden
+	\item Problem:
+	\\Je nach Ausbreitungsverzögerung sehr geringe effektive Übertragungsrate
+\end{itemize}
+Funktionsweise von Sliding-Window-Protokollen:
+\\Bei ACK wird die Übertragungskapazität schlecht ausgenutzt
+\\Jetzt: Sender schickt mehrere Frames, ohne auf ACKs zu warten
+\\\includegraphics[width=0.70\textwidth]{"graphics/sliding-window"}
+Varianten von Sliding-Window-Protokollen:
+\begin{itemize}
+	\item "Go-Back-n"-Strategie: RWS = 1
+	\\Empfangspuffer des Empfängers kann genau ein Datensegement zwischen puffern
+	\item "Selective Repeat"-Strategie: RWS \> 1
+	\\Empfangspuffer des Empfängers kann mehrere Datenrahmen zwischen puffern
+\end{itemize}
 \end{document}
