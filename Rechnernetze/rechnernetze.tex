@@ -13,10 +13,18 @@
 \author{\href{https://github.com/bircni}{\color{black}github/bircni}}
 \date{}
 \begin{document}
-%test
+\pagenumbering{gobble}  
 \maketitle
-\section*{1. Einleitung}
-\subsection*{Datenübertragung im Internet}
+\pagebreak
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+%\renewcommand{\cftdot}{}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Seite}\par}
+\pagebreak
+\pagenumbering{arabic}
+\chapter{Einleitung}
+\section{Datenübertragung im Internet}
 \begin{itemize}
 	\item Die Bitübertragungsschicht
 	\begin{itemize}
@@ -68,7 +76,7 @@
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
-\subsection*{ISO/OSI-Modell}
+\section{ISO/OSI-Modell}
 \begin{itemize}
 	\item 7 Schichten
 	\item Jede Schicht definiert Funktionen die als Dienste der nächst höheren Schicht zu Verfügung stehen
@@ -81,10 +89,7 @@
 		\item Schicht 4: Verbindet die Netz- und Anwendungsschicht
 		\item Schicht 5-7: Anwendungs orientiert, Festlegung des Datenaustauschs und Datenformats
 	\end{itemize}
-	\begin{figure}[h]
-		\includegraphics[width=0.55\textwidth]{"graphics/ISO"}
-		\centering
-	\end{figure}
+	\includegraphics[width=0.4\textwidth]{"graphics/ISO"}
 	\item Funktionen der Schichten:
 	\begin{enumerate}
 		\item Bitübertragungsschicht: (Bit-Repräsentation)
@@ -112,8 +117,8 @@
 	\end{figure}
 \end{itemize}
 
-\section*{2. Datenübertragung}
-\subsection*{Fourieranalyse}
+\chapter{Datenübertragung}
+\section{Fourieranalyse}
 \label{sec:fourier}
 Jede periodische Funktion g(t) mit t (Zeit) und Periode T kann als Überlagerung
 von Sinus- und Cosinustermen dargestellt werden.
@@ -127,7 +132,7 @@ zur Leistung, die bei der Frequenz $f_{n}$ übertragen wird.
 \\
 Beispiel-Applet: \url{https://falstad.com/fourier}
 
-\subsection*{Dämpfung D}
+\section{Dämpfung D}
 \label{sec:dampf}
 Üblicherweise wird die Dämpfung in der Einheit Dezibel angegeben
 $$D_{dB}=10*\log_{10}(P_{in}/P_{out})  [dB]$$
@@ -136,7 +141,7 @@ $\rightarrow$   Unabhängig davon ob Leistung [P] oder Spannung [U] verglichen w
 ergibt sich bei der Formel der gleiche Wert.
 Wird als Einheit dB verwendet, addieren sich die Dämpfungen einzelner Abschnitte.
 
-\subsection*{Bandbreite B}
+\section{Bandbreite B}
 \label{sec:bandbreite}
 Bandbreite eines Übertragungskanals $B = f_{max}-f_{min}$
 \begin{itemize}
@@ -149,7 +154,7 @@ Bandbreite eines Übertragungskanals $B = f_{max}-f_{min}$
 	\centering
 \end{figure}
 
-\subsection*{Nyquist-Theorem}
+\section{Nyquist-Theorem}
 Zusammenhang zwischen \hyperref[sec:bandbreite]{Bandbreite B} und der maximal möglichen
 Datenrate D eines idealen Übertragungskanals:
 $$D = 2*B*\log_{2}(N)$$
@@ -165,7 +170,7 @@ Beispiel:
 	      $\rightarrow$ maximal erreichbare Datenrate beträgt 6000 bps
 \end{itemize}
 
-\subsection*{Shannon'scher Kanalkapazitätssatz}
+\section{Shannon'scher Kanalkapazitätssatz}
 \begin{itemize}
 	\item Maximale Datenrate eines realen Datenkanals
 	      \begin{itemize}
@@ -186,7 +191,7 @@ Beispiel:
 	      \end{itemize}
 \end{itemize}
 
-\subsection*{Bitrate vs. Signalgeschwindigkeit}
+\section{Bitrate vs. Signalgeschwindigkeit}
 \begin{itemize}
 	\item Signalgeschwindigkeit: Anzahl der Signalwechsel pro Sekunde
 	      \begin{itemize}
@@ -201,7 +206,7 @@ Beispiel:
 	      \end{itemize}
 \end{itemize}
 
-\subsection*{Die Ende-zu-Ende-Verzögerung von Datenpaketen}
+\section{Die Ende-zu-Ende-Verzögerung von Datenpaketen}
 \begin{itemize}
 	\item Zeit: Datenpaketübertragung von Quell-Knoten zu Ziel-Knoten
 	\item Verzögerungsarten die zur Verzögerung beitragen:
@@ -223,7 +228,7 @@ Beispiel:
 	\centering
 \end{figure}
 
-\subsection*{Grundlegende Übertragungstechniken}
+\section{Grundlegende Übertragungstechniken}
 \begin{itemize}
 	\item Digitale Eingabe, digitale Übertragung: \\\hyperref[sec:Leitungscodierung]{Digitale Leitungscodierung}
 	      \begin{itemize}
@@ -239,7 +244,7 @@ Beispiel:
 	      \end{itemize}
 \end{itemize}
 
-\subsection*{Digitale Leitungscodierung}
+\section{Digitale Leitungscodierung}
 \label{sec:Leitungscodierung}
 \begin{itemize}
 	\item Direkte Übertragung rechteckförmiger Signale
@@ -295,5 +300,58 @@ Beispiel:
 		$A_{0}$: Amplitude; $\phi$: Phasenverschiebung;
 		\\$f=1/T=$Frequenz; $T=$Schwingungsperiode;
 	\end{itemize}
+\end{itemize}
+\chapter{Die Sicherungsschicht und lokale Netze}
+Aufgaben der Sicherungsschicht:
+\begin{itemize}
+	\item Bereitstellung einer logischen Verbindung zwischen direkt verbundenen Kommunikationssystemen
+	\item Zuverlässige Zustellung von Daten für die Vermittlungsschicht
+	\\Bereitstellung einer Dienstschnittstelle
+	\\Sicherung der Daten vor Verfälschung bei Übertragung
+\end{itemize}
+Funktion der Sicherungsschicht:
+\\\includegraphics[width=0.60\textwidth]{"graphics/Funktion-Sschicht"}
+\\Ablauf der Fehlererkennung:
+\\\includegraphics[width=0.70\textwidth]{"graphics/Ablauf"}
+\section{Rahmenbildung und Fehlererkennung}
+\subsection{Rahmenbildung}
+Zur Fehlererkennung werden Bitströme in kleine Dateneinheiten aufgeteilt (Rahmen).
+\\Wie erkennt der Empfänger Anfang und Ende des Rahmens?
+\\Das Format des Rahmens hängt von der Netztopologie ab (Ethernet, Token Ring, ATM)
+\\Erkennung von Rahmengrenzen:
+\begin{itemize}
+	\item Verwendung illegaler Codezeichen auf Bitübertragungsbene
+	\\z.B. Manchester-Codierung: kein SIgnalübergang in der Mitte eines Intervalls
+	\item Längenangabe im Rahmen-Header: Byte-Zählmethode
+	\item Verwendung von speziellen Steuerzeichen: Byte-Stopfen
+	\\ Spezielle ASCII-Zeichen werden als Steuerzeichen benutzt (SOH,EOH)
+	\\In den Daten können zufällig Steuerzeichen auftreten
+\end{itemize}
+\subsection{Fehlererkennung}
+Aufteilung der Daten in einzelne Rahmen durch den Sender
+\\Pro Rahmen wird eine redundante Zusatzinfo geschickt $\rightarrow$ Empfänger kann Übertragungsfehler erkennen
+\\Hamming-Distanz:
+\begin{itemize}
+	\item Erlaubt die Bewertung von Fehlercodes
+	\item Definition:
+	\\Distanz zwischen 2 zulässigen Wörtern (Anzahl unterschiedlicher Bitpositionen)
+	\\Hamming-Distanz ist die minimale Distanz zweier bel. Wörter einer Codierung
+	\item Regeln:
+	\\Für die Erkennung von \textit{d} Bitfehlern muss die Hamming-Distanz \textit{d+1} sein
+	\\Für die Behebung von \textit{d} Bitfehlern muss die Hamming-Distanz \textit{2d+1} sein
+\end{itemize}
+Fehlererkennungscodes:
+\begin{itemize}
+	\item Eindimensionale Parität
+	\\Übertragung eines zusätzlichen Bits zu jedem Wort der Länge d Bit
+	\\$\rightarrow$ Ungerade Parität (d+1)tes Bit wird auf 1 gesetzt, wenn Anzahl der 1sen im d-Bit Wort gerade
+	\\$\rightarrow$ Gerade Parität (d+1)tes Bit wird auf 1 gesetzt, wenn Anzahl der 1sen im d-Bit Wort ungerade
+	\item Zweidimensionale Parität
+	\\Zusätzliche Paritätsberechnung für jeweilige Bit-Position
+	\item Internet-Prüfsummen
+	\\ Sender interpretiert Nutzdaten als Folge von Ganzzahlen und berechnet die Summe
+	\\\includegraphics[width=0.70\textwidth]{"graphics/prufsum"}
+	\item Cyclic Redundancy Check (CRC)
+	\\\includegraphics[width=0.80\textwidth]{"graphics/CRC"}
 \end{itemize}
 \end{document}
