@@ -1,0 +1,42 @@
+\documentclass{scrreprt}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amstext}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor=blue,
+  pdfborderstyle={/S/U/W 0}
+}
+\title{\textbf{Titel}}
+\author{\href{https://github.com/toiletcoders}{\color{black}github/toiletcoders}}
+\date{}
+\begin{document}
+\pagenumbering{gobble}  
+\maketitle
+\pagebreak
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Seite}\par}
+\pagebreak
+\pagenumbering{arabic}
+\chapter{Hauptüberschrift}
+\section{Unterüberschrift}
+\subsection{Unterunterüberschrift}
+%Grafik einbetten:
+%\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
+\begin{itemize}
+    \item item 1
+    \item item 2
+    \item Mathematische Formel: $4^{5} + a_{6}$
+\end{itemize}
+\end{document}
