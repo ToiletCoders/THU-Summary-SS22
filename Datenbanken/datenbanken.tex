@@ -7,6 +7,9 @@
 \usepackage{amsfonts}
 \usepackage{tabularx}
 \usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hypersetup{
   colorlinks=false,
@@ -14,18 +17,143 @@
   pdfborderstyle={/S/U/W 0}
 }
 \title{\textbf{Datenbanken}}
-\author{\href{https://github.com/bircni}{\color{black}github/bircni}}
+\author{\href{https://github.com/toiletcoders}{\color{black}github/toiletcoders}}
 \date{}
 \begin{document}
 \pagenumbering{gobble}  
 \maketitle
 \pagebreak
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
-%\renewcommand{\cftdot}{}
 \setcounter{tocdepth}{1}
 \tableofcontents
 \addtocontents{toc}{~\hfill\textbf{Seite}\par}
 \pagebreak
 \pagenumbering{arabic}
-\chapter{1}
+\chapter{Einführung}
+\section{Grundlagen}
+\subsection{ANSI-SPARC}
+\begin{itemize}
+  \item Ebene 1: Externe Ebene
+  \\Nutzer benötigen nur Teilausschnitt der Daten
+  \\Spezifikation der notwendigen Datensicht
+  \item Ebene 2: Konzeptionelle Ebene 
+  \\Vereinheitlichung der Sichten der Externen Ebene 
+  \\Vollständige Beschreibung der für alle Anwendungen relevanten Objekte und deren Beziehungen
+  \item Ebene 3: Interne Ebene
+  \\physikalische Darstellung der Datenbank im Computer
+  \\Speicherstrukturen zur Ablage der Daten
+\end{itemize}
+\includegraphics[width=0.6\textwidth]{"graphics/ANSI-SPARC"}
+\\Eigenschaften:
+\begin{itemize}
+  \item Gleiche Daten für alle Nutzer
+  \item Änderungen in Nutzersichten sind lokal für die Anwendung
+  \item Datenspeicherung (wie und wo) für Nutzer unwichtig
+  \item Anwendungsstruktur für Datenbankaufbau unerheblich
+  \item Änderung im Datenbankaufbau ohne Wirkung auf Nutzersicht
+\end{itemize}
+Beispiel:
+%\\\includegraphics[width=0.7\textwidth]{"graphics/ANSI-BSP"}
+\\Logische Datenunabhängigkeit:
+\begin{itemize}
+  \item Anwendungen werden nicht beeinträchtigt, wenn Änderungen am Schema vorgenommen werden
+  \item Bei logischer Datenunabhängigkeit:
+  \\Keine Änderung an Spezifikationen durch Hinzufügen, Ändern, Löschen von Objekten
+  \item Nur teilweise gegeben in praktischen Datenbanksystemen
+\end{itemize}
+Physische Datenunabhängigkeit:
+\tab Aus physischer Datenunabhängigkeit folgt:
+\\\tab Keine Änderung am konzeptionellen/externen Schema durch Umstellung der
+Dateistruktur, Speicherstruktur, Speichermedien, Anzahl der DB Server
+\\\tab Weitestgehnd gegeben in prakticshen Datenbanksystemen
+\subsection{CASE Werkzeuge}
+CASE = Computer Aided Software Engineering
+\\Entwicklung von Software nach ingenieur-wissenschaftl. Methoden unter Verwendung eines Computers
+\\\textbf{Ziel:} Erstellung von Software möglichst automatisch aus dem Fachkonzept
+CASE:
+\begin{itemize}
+  \item Oftmals graphische Notation des Fachkonzepts
+  \item CASE-Werkzeuge (Tools)
+  \begin{itemize}
+    \item Planung
+    \item Entwurf
+    \item Dokumentation
+  \end{itemize}
+  \item können in die IDE integriert Sichten
+\end{itemize}
+\subsection{Datenbank- vs. dateibasierte Anwendungssysteme}
+\textbf{Architektur Datei-basierter Anwendungen:}
+\\Zahlreiche Nachteile
+\tab \begin{itemize}
+  \item Redundanz
+  \item Gemeinsamer Zugriff mittels Konvertern
+  \item Datenstrukturänderung bedingt Umprogrammieren
+  \item Keine parallelen Zugriffe möglich
+  \item Keine Sicherungsmechanismen
+\end{itemize}
+\textbf{Architektur Datenbank-basierter Anwendungen}
+\\\includegraphics[width=0.55\textwidth]{"graphics/Datenbank-Arch"}
+\subsubsection{DBMS vs. DB}
+\textbf{Datenbank}
+\begin{itemize}
+  \item Sammlung strukturierter Daten
+  \item sachlogische Zusammenhänge untereinander
+\end{itemize}
+\textbf{Datenbankmanagementsystem}
+\begin{itemize}
+  \item Programmsystem
+  \item Systemsoftware für alle Aspekte der Datenverwaltung
+  \item Beinhaltet of eine oder mehrere DBen
+\end{itemize}
+\textbf{Architektur DBMS}
+\\Zahlreiche Vorteile:
+\begin{itemize}
+  \item Redundanzfrei
+  \item Logische Datenunabhängigkeit
+  \item Physische Datenunabhängigkeit
+  \item Mehrnutzerbetrieb mit Rechteverwaltung
+  \item Normierte Schnittstelle mit Effizienter Verwaltung
+\end{itemize}
+\subsection{Phasenmodell für Datenbankentwurf}
+\begin{itemize}
+  \item [1.] Anforderungsanalyse:
+  \\Anforderungen der potentiellen Benutzer werden erfasst
+  \begin{itemize}
+    \item Informelle Beschreibung
+    \item Unterscheidung in Informations- und Bearbeitungsanforderungen
+    \item Funktionenmodell: \textbf{C}reate, \textbf{R}ead, \textbf{U}pdate, \textbf{D}elete (CRUD)
+  \end{itemize}
+  \item [2.] Konzeptioneller Entwurk
+  \begin{itemize}
+    \item Erste formale Darstellung erstellen: konzeptionelles und externe Schemata
+    \item Datenmodelle sind abstrakte Darstellungen der Wirklichkeit
+    \item Ansätze zur Erstellung eines konzeptionellen Entwurfs:
+    \begin{itemize}
+      \item \textbf{Top-Down-Ansatz}
+      \\Modellierung des konzeptionellen Schemas und Ableitung der externen Schemata
+      \item \textbf{Bottom-Up-Ansatz}
+      \\Modellierung der externen Schemata und anschließende Integration der externen Schemata zu einem konzeptionellen Schema.
+      \\Hierbei müssen i.d.R. Widersprüche und Konflikte zwischen einzelnen externen Schichten aufgelöst werden.
+    \end{itemize}
+  \end{itemize}
+  \item [3.] Logischer Entwurf
+  \\Das logische Schema beschreibt die Datenstrukturen des konzeptionellen Modells
+  \begin{itemize}
+    \item Entscheidung für verwendetes DBMS oder mind. für ein Datenbankmodell
+    \item Transformation des konzept. Modells in Abhängigkeit der Anforderungen des Datanbankmodells
+    \item Optimierung des Modells durch Vermeidung von Redundanzen im Rahmen der Normalisierung
+  \end{itemize}
+  \item [4.] Datendefinition
+  \begin{itemize}
+    \item Logisches Modell wird mit \textbf{Data Definition Language (DLL)} definiert
+    \item Externe Schemata werden mit \textbf{View Definition Language (VDL)} definiert
+  \end{itemize}
+    Umsetzung des log. Schemas und der externen Schemata mit Hilfe der Datenbanksprache.
+  \\Diese Datenbanksprache ist i.d.R. SQL
+  \\\textbf{S}tructured \textbf{Q}uery \textbf{L}anguage
+  \\SQL ist standardisiert, allerdings gibt es Dialekte je nach DBMS
+
+\end{itemize}
+%Grafik einbetten:
+%\includegraphics[width=0.7\textwidth]{"../graphics/name-der-grafik"}
 \end{document}
