@@ -154,6 +154,103 @@ CASE:
   \\SQL ist standardisiert, allerdings gibt es Dialekte je nach DBMS
 
 \end{itemize}
+\chapter{Konzeptionelles Modell}
+\section{Entitäten und Entitätstypen}
+\subsection{Entity-Relationship Modell}
+Vereinfachte graphische Darstellung von Entitäten (Objekten), Beziehungen zw. den Objekten: Notwendigkeit, Anzahld er beteiligten Entitäten
+\\\textbf{Ziele:}
+\begin{itemize}
+  \item Bessere Kommunikation zwischen den Beteiligten
+  \\\tab Experten (Fachabteilung), ANwendungsentwickler, \dots
+  \\\tab Beurteilung der Qualität des Modells
+  \\\tab Grundlage zur Erstellung der Datenbank
+\end{itemize}
+\subsection{Entitäten und Entitätstypen}
+\textbf{Entität (Objekt)}
+\begin{itemize}
+  \item Ein Exemplar von
+  \begin{itemize}
+    \item Konkreten (Studierender; Gebäude)
+    \item Abstrakten/ nicht-materiellen (Zugehörigkeit; Betreuungsverhältnis)
+  \end{itemize}
+  \item Dient der Informationsspeicherung
+\end{itemize}
+\textbf{Entitätstyp}
+\begin{itemize}
+  \item Eindeutig benannt
+  \item "Gruppe" von Entitäten (Objekten)
+  \item Speicherung gleichartiger Informationen
+  \item Gleichartige Verarbeitungsverzögerung
+  \item "Klasse" in der OOP
+\end{itemize}
+\subsection{Attribut}
+\textbf{Attribut}
+\begin{itemize}
+  \item Eigenschaft
+  \item Benennung eines Merkmals
+  \item Ein relevantes Merkmal von Entitäten eines Entitätstyp
+\end{itemize}
+\textbf{Attributwert}
+\begin{itemize}
+  \item Eigenschaftswert
+  \item Spezielle Ausprägung eines Attributs für ein Objekt
+\end{itemize}
+\includegraphics[width=0.7\textwidth]{"graphics/BSP-entity"}
+\subsection{Identifizierungsmöglichkeiten}
+\textbf{Möglichkeiten zur Identifizierung einer Entität}
+\\\tab Ein einziges Attribut - Bezeichnung eines Fachs
+\\\tab Kombination von Attributen - Name und Kreis eines Ortes
+\\\tab Organisatorisches Attribut - Personalnummer
+\subsection{Hauptattribut}
+\textbf{Ein Hauptattribut hat eine} identifizierende Eigenschaft oder eine teil-identifizierende Eigenschaft
+\\\textbf{Es leistet einen Beitrag} zur Identifizierung einer Entität und innerhalb eines Entitätstyps
+\subsection{Nebenattribut}
+\textbf{Ein Nebenattribut} hat eine beschreibende Eigenschaft und ist nicht notwendig zur Identifizierung
+\\\textbf{Es leistet keinen Beitrag} zur Identifizierung einer Entität und innerhalb eines Entitätstyps
+\section{Beziehungen}
+Eine Beziehung ist ein konkreter Zusammenhang zwischen realen Entitäten.
+\\An einer Beziehung können auch mehr als zwei Entitäten beteiligt sein. (Duale/ binäre Beziehung)
+\\Ein \textbf{Beziehungstypen} ist eine sachlogischer Zusammenhang zwischen Entitäten verschiedener Entitätstypen
+\\Der \textbf{Der Grad eines Beziehungstypen} ist die Anzahl der an einem Beziehungstypen beteiligten Entitätstypen
+\\\includegraphics[width=0.7\textwidth]{"graphics/bsp-bz"}
+\subsection{Multiplizität}
+Mulitplizität $<\textcolor{blue}{A},\textcolor{red}{B}>$ besteht aus zwei Aspekten
+\\\tab Optionalität: Zeichen \textcolor{blue}{vor} dem Komma
+\\\tab Kardinalität: Zeichen \textcolor{red}{hinter} dem Komm
+\\\textcolor{blue}{\textbf{Optionalität}}
+\\\tab Muss jedes A mit einem B in Beziehung stehen?
+\\\tab Ja $=>$ \textcolor{blue}{1},? \tab Nein $=>$ \textcolor{blue}{0},?
+\\\textcolor{red}{\textbf{Kardinalität}}
+\\\tab Kann ein A mit mehreren Bs in Beziehung stehen?
+\\\tab Ja $=>$ ?,\textcolor{red}{N} \tab Nein $=>$ ?,\textcolor{red}{1}
+\subsection{Beziehungstyp Regeln}
+\begin{itemize}
+  \item Ein Beziehungstyp wird durch eine Linie dargestellt
+  \item Die Benennung der Richtung von A nach B steht in der Nähe von A
+  \item Optionalität wird durch einen Kreis gekennzeichnet
+  \item Eine verpflichtende Verbindung wird durch einen Strich gekennzeichnet
+  \item Kardinalität 1 wird durch einen Strich dargestellt, N durch "Krähenfüße"
+  \item Bei $>1$ können auch Minimum und Maximum angegeben werden [min,max]
+\end{itemize}
+\subsection{Klassen von Beziehungstypen}
+\includegraphics[width=0.9\textwidth]{"graphics/kardin"}
+\section{Beziehungen (weitere Konzepte)}
+%Redundanz
+%Parallele Beziehungstypen
+%Identifizierende Beziehung
+%Schlüssel
+%Rekursiv-Beziehungstypen
+%Eigenschaften von Beziehungstypen
+\subsection{Redundanz}
+Gründe für die Vermeidung von Redundanz:
+\\\tab Mehraufwand in der Datenpflege
+\\\tab Widersprüchlichkeit in den Daten möglich 
+\\\tab Speicherplatzverschwendung
+\subsection{Parallele Beziehungstypen}
+\includegraphics[width=0.7\textwidth]{"graphics/parallel-bz"}
+\\ Ein \textbf{Schwacher Entitätstyp} ist:
+\\\tab Eigenschaften nicht ausreichend für eindeutige Identifizierung
+\\\tab Eine oder mehrere Beziehungstyp-Richtungeen zur
 %Grafik einbetten:
-%\includegraphics[width=0.7\textwidth]{"../graphics/name-der-grafik"}
+%\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
 \end{document}
