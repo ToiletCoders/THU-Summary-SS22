@@ -5,3 +5,4 @@
 [Theoretische Informatik](Theoretische%20Informatik) (now including "Lektion 12")  
 [Datenbanken](Datenbanken) (including some things for now)  
 [Analysis](Analysis)  (only Scripts and Exercises)
+[Vorlage](Vorlage) (template)
