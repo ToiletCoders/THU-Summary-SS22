@@ -469,6 +469,28 @@ Ein DEA ist ein Minimalautomat falls der Automat die Sprache L akzeptiert und es
 \end{itemize}
 \subsection{Äquivalenz von Zuständen}
 \includegraphics[width=0.7\textwidth]{"graphics/DEA-Zustand"}
-\includegraphics[width=0.7\textwidth]{"graphics/DEA-BSP"}
-
+\\\includegraphics[width=0.7\textwidth]{"graphics/DEA-BSP"}
+\subsection{Berechnung äquivalenter Zustände}
+\includegraphics[width=0.8\textwidth]{"graphics/Algo7-19"}
+\section{Äquivalenz von Automaten}
+Zwei DEAs $A_{1}$ und $A_{2}$ heißen äquivalent, wenn beide die gleiche Sprache akzeptieren, d.h. \tab $L(A_{1})=L(A_{2})$
+\\\textbf{Äquivalenznachweis für DEAs}
+\\\includegraphics[width=0.7\textwidth]{"graphics/a-nachweis"}
+\chapter{Nichtdeterministische endliche Automaten}
+\section{NEAs mit $\epsilon$-Übergängen}
+Ein nichtdeterministischer endlicher Automat mit $\epsilon$-Übergängen
+\\$A=(Z,\sum,\Delta,z_{0},E)$
+\\Z \tab endliche Zustandsmenge
+\\$\sum$ \tab Eingabealphabet
+\\$z_{0} \in Z$ \tab Startzustand
+\\$\Delta$ \tab Zustandsübergangsrelation
+\\E \tab Menge von akzeptierenden Zuständen
+\subsection{Sprache eines $\epsilon$-NEA}
+\includegraphics[width=0.75\textwidth]{"graphics/NEA-rel"}
+\section{Transformation von $\epsilon$-NEAs in DEAS}
+\subsection{Teilmengenkonstruktion}
+\includegraphics[width=1\textwidth]{"graphics/teilmenge"}
+Ist $A_{D}$ der gebildete DEA zu einem $\epsilon$-NEA $A_{N}$, dann gilt $L(A_{D})=L(A_{N})$ , beide Automaten akzeptieren die gleiche Sprache.
+\subsection{Verbesserte Teilmengenkonstruktion}
+\includegraphics[width=1\textwidth]{"graphics/verb-teilmenge"}
 \end{document}
