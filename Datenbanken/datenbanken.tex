@@ -291,10 +291,47 @@ Generelle Regel:
 \end{itemize}
 %3.9
 
-\subsection{Grundlagen}
+%\subsection{Grundlagen}
 \subsection{Schlüssel im RDMBS}
+Ein Schlüssel ist jede identifizierende Attributmenge, die minimal ist.
+\\Primärschlüssel ist ein Schlüssel zur Identifizierung einzelner Tupel
+\\Fremdschlüssel ist eine Attributmenge die einen anderen Primärschlüssel referenziert
+\\\includegraphics[width=0.7\textwidth]{"graphics/Fremdschlussl"}
 \section{NoSQL (andere Datenmodelle)}
+\textbf{NoSQGL Eigenschaften}
+\begin{itemize}
+  \item Datenmodell ist nicht-Relational
+  \item keine Relationen
+  \item Sammelbegriff für nicht-relationale Datenmodelle
+  \item NoSQL Modell ist oft frei von einem mathematischen Schema
+\end{itemize}
 \section{Datentypen}
+Jedem Attribut wird ein Datentyp zugewiesen
+\subsection{Nummerische Datentypen}
+Ablage von numerischen Werten (Vorzeichenbehaftet - Signed, sonst Unsigned)
+\subsection{Ganzzahlige Datentypen}
+\textbf{BOOLEAN} (1 Byte) true/false
+\\\textbf{TINYINT} (1 Byte) sehr kleine Werte (-128 bis 127) (Unsigned 0 bis 255)
+\\\textbf{SMALLINT} (2 Byte)
+\\\textbf{MEDIUMINT} (3 Byte)
+\\\textbf{INT} (4 Byte)
+\\\textbf{BIGINT} (8 Byte)
+\subsection{Kommazahlen}
+\textbf{Festkommazahl} hat immer den gleichen Exponenten (Preise, Ausmaße)
+\\\textbf{Fließkommazahl} hat wechselnde Exponenten
+\subsection{Fließkommazahlen}
+\textbf{FLOAT} (4 Byte) einfache Genauigkeit
+\\\textbf{DOUBLE} (8 Byte) doppelte Genauigkeit
+\subsection{Festpunktzahlen}
+\textbf{DECIMAL} Angabe von exakten Zahlen, Festlegung der Länge und Nachkommastellen
+\subsection{Datums-Datentyp}
+Speichern Datums- und Zeitwerte, (DATETIME, DATE, TIMESTAMP, YEAR, TIME)
+\subsection{String Datentypen}
+\textbf{CHAR(N)} Ablage von Zeichenketten der festen Länge N
+\\\textbf{VARCHAR(N)} Ablage von Zeichenketten mit variabler Länge bis zu N
+\\CHAR benötigt 1 Byte pro Zeichen 
+\\VARCHAR benötigt 1 Byte zusätzlich pro Spalte
+%next Kapitel 4
 %Grafik einbetten:
 %\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
 \end{document}
