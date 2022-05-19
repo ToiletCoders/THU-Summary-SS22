@@ -400,5 +400,112 @@ Alle Teilnehmer eines LANs teilen sich die Übertragungskapazität \textbf{"shar
 \subsection{MAC (Ethernet)-Adresse}
 Länge: 6 Bytes bzw. 48 Bits
 \\Broadcast-Adresse: Alle Bits der LAN-Adresse sind auf 1 gesetzt
-%Kapitel 3 Seite 40
+\subsection{Funktion eines Ethernet-Adapters}
+Der Ethernet-Adapter überprüft jeden gesendeten Rahmen (Hardware)
+\\Wenn die Ziel-MAC-Adresse eines Rahmen = der lokalen MAC-Adresse des Adapters:
+\\\tab Rahmen wird an das Betriebssystem weitergeleitet 
+\\\tab Ausnahme: Promiscuous Mode oder MAC-Broadcast
+\subsection{Netzwerkkomponenten}
+\begin{itemize}
+	\item Ethernet-Repeater:
+	\begin{itemize}
+		\item Zweck
+		\\Längenbeschränkung aufgrund von Signaldämpfung aufheben
+		\\Kopplung gleichartiger Netsegmente
+		\item Funktion
+		\\Arbeitet auf der Bitübertragungsschicht
+		\\Verstärker wird zwischen zwei Segmente geschaltet
+	\end{itemize}
+	\item Ethernet-Hubs
+ 	\begin{itemize}
+	 	\item Zweck ähnlich wie von Repeatern
+		\\Repeater koppeln Segmente - Hubs bilden den zentralen Bus eines Segments
+		\item Funktion
+		\\Hubs arbeiten auf der Bitübertragungsschicht
+		\\Das Gesamtnetz bildet eine Kollisionsdomäne
+ 	\end{itemize}
+	\item "Repeater"-Regeln
+	\\Anzahl der kaskadierbaren Hubs/Repeater ist begrenzt (max. 5 Segmente durch 4 Hubs/Repeater)
+	\\\includegraphics[width=0.70\textwidth]{"graphics/repeater-regeln"}
+	\item Ethernet-Bridges
+	\begin{itemize}
+		\item Kopplung zweier Ethernet-Segmente mit folgenden Eigenschaften
+		\\Geschwindigkeitskonversion und Aufhebung der Repeater-Regeln
+		\item Funktion
+		\\Bridges sind Geräte der ISO/OSI-Schicht 2 (Bit-/Sicherungsschicht)
+		\\Bridges entkoppeln Kollisionsdomänen
+	\end{itemize}
+	\item "Multiport"-Bridge
+	\\Bridge mit mehr als zwei LAN-Schnittstellen
+	\\enthält Informationen zur Filterung und Weiterleitung von Rahmen
+	\item Selbstlernende Bridges
+	\\Bridge "lernt" die Tabelleneinträge selbstständig
+	\item Ethernet-Switches
+	\\geringere Durchlaufverzögerung, mehr Ports und höherer Durchsatz als bei der Multiport-Bridge
+	\item VLANs
+	\\Switch verwaltet mehrere unabhängige Broadcast-Domänen
+	\\Rechner können in unabhängige VLANs eingeteilt werden
+\end{itemize}
+\section{Wireless LAN (IEEE 802.11)}
+Nutzt lizenzfreies 2,4GHz bzw. 5GHz Bandbreite
+\\Erreichbare Datenraten
+\begin{itemize}
+	\item IEEE 802.11b \tab 11Mbps
+ 	\item IEEE 802.11g \tab 54Mbps
+	\item IEEE 802.11a \tab 54Mbps $\rightarrow$ USA
+	\item IEEE 802.11n \tab 600Mbps
+	\item IEEE 802.11ac \tab 1700Mbps
+\end{itemize}
+Erreichbare Reichweiten: 30-50m im Gebäude, bis 1km außerhalb
+\subsection{WLAN-Betriebsmoden}
+\begin{itemize}
+	\item Ad hoc Modus
+	\\Direkter Verbindungsaufbau zwischen WLAN-Knoten
+	\\Knoten müssen die gleiche Übertragungskanal-Nr. und SSID verwenden
+	\item Infrastruktur-Modus
+	\\WLAN-Clients kommunizieren über den Access Point (AP)
+	\\Access Point wirkt wie eine Bridge zw. Funknetz und drahtgebundenem Netz
+	\\über Broadcast werden Funknetz-Parameter verteilt
+\end{itemize}
+\subsection{Nutzbare Frequenzbänder für IEEE 802.11b/g}
+13 überlappende Frequenzbänder (Europa)
+\\\tab Standard-Kanal-Nummern: 1,6,11
+\\Überlappungen führen zu Störungen und Bitrateneinbußen
+\subsection{CSMA/CA: Medienzugriffsprotokoll für WLAN}
+Kapitel 3 S.56-59
+\subsection{Sicherheitsmechanismen für 802.11-Netze}
+\begin{itemize}
+	\item Alte Sicherheitsmechanismen:
+ 	\begin{itemize}
+	 	\item (E)SSID, (Extended)ServiceSetIdentity: Kennung des Netzes
+		\\WLAN-Client braucht die Kennung, um sich anzumelden
+		\\wird oft durch Beacon-Frames vom AP selbst bekannt gemacht
+		\item MAC-ACLs (Media Access Control-Access Lists)
+		\\AP fürht List mit erlaubten Client-MAC-Adressierung
+		\\MAC-Adresse können modifiziert werden
+		\item WEP (Wired Equivalent Privacy)-Verschlüsselung
+ 	\end{itemize}
+	\item Neue Sicherheitsmechanismen:
+	\\Aktueller Sicherheitsstandard - WPA
+\end{itemize}
+\textbf{WEP-Verschlüsselung}
+\\\includegraphics[width=0.70\textwidth]{"graphics/WEP"}
+\\Der WEP-Schlüssel besteht aus zwei Teilen
+\begin{itemize}
+	\item [1.] "Geheimer" Benutzerschlüssel:
+	\\Muss auf allen berechtigten Edngeräten eingetragen werden
+	\\WEP64: enthält 40Bit-Benutzerschlüssel
+	\item [2.] 24-Bit-Initialisierungsvektor (IV):
+	\\Wird für "jedes" verschickte Datenpaket geändert
+\end{itemize}
+\textbf{Schwächen der WEP-Verschlüsselung}
+\\IV ist zu kurz (nur 24 Bit)
+\\\tab ca. alle 16 Mio Datenpakete wiederholt sich der IV
+\\\tab IV wird im Klartext übertragen
+\\Keine Schlüsselveraltung
+\\\tab Speicherugn der geheimen Benutzerschlüssel in jedem Client
+\\\tab Invalidierung eines Schlüssel erfolgt manuell
+\\\textbf{Sicherheit von 802.11-Funktnetzen}
+%%Kap 3 S69
+%Kapitel 3 Seite 56
 \end{document}
