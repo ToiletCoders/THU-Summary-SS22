@@ -489,8 +489,26 @@ Ein nichtdeterministischer endlicher Automat mit $\epsilon$-Übergängen
 \includegraphics[width=0.75\textwidth]{"graphics/NEA-rel"}
 \section{Transformation von $\epsilon$-NEAs in DEAS}
 \subsection{Teilmengenkonstruktion}
-\includegraphics[width=1\textwidth]{"graphics/teilmenge"}
-Ist $A_{D}$ der gebildete DEA zu einem $\epsilon$-NEA $A_{N}$, dann gilt $L(A_{D})=L(A_{N})$ , beide Automaten akzeptieren die gleiche Sprache.
+\includegraphics[width=0.7\textwidth]{"graphics/teilmenge"}
+\\Ist $A_{D}$ der gebildete DEA zu einem $\epsilon$-NEA $A_{N}$, dann gilt $L(A_{D})=L(A_{N})$ , beide Automaten akzeptieren die gleiche Sprache.
 \subsection{Verbesserte Teilmengenkonstruktion}
-\includegraphics[width=1\textwidth]{"graphics/verb-teilmenge"}
+\includegraphics[width=0.7\textwidth]{"graphics/verb-teilmenge"}
+\pagebreak
+\chapter{Reguläre Sprachen}
+\section{Reguläre Ausdrücke und endliche Automaten}
+\subsection{Umwandlung regulärer Ausdrücke in $\epsilon$-NEAs}
+Induktive Konstruktion eines $\epsilon$-NEA zu regulärem Ausdruck
+\\\includegraphics[width=0.65\textwidth]{"graphics/9-1-1"}
+\\Jeder konstruierte Automat hat genau einen Endzustand.
+\\Der Startzustand hat keine eingehenden Zustandsübergänge.
+\\Der Endzustand hat keine ausgehenden Zustandsübergänge.
+\subsection{Strukturelle Induktion}
+\textbf{Induktive Definition von Mengen:}
+\\gegeben:
+\begin{itemize}
+    \item Eine endliche Menge $G=\{a_1,a_2,....,a_n\}$ von Grundelementen
+    \item Eine endliche Menge $R=\{r_1,\dots,r_k\} $ von Konstruktionsregeln
+    \\Eine induktiv definierte Menge besteht aus allen Elementen, die durch Konstuktionsschritte konstruiert werden können.
+\end{itemize}
+%Lektion 15:
 \end{document}
