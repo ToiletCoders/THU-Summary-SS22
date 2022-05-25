@@ -331,7 +331,46 @@ Speichern Datums- und Zeitwerte, (DATETIME, DATE, TIMESTAMP, YEAR, TIME)
 \\\textbf{VARCHAR(N)} Ablage von Zeichenketten mit variabler Länge bis zu N
 \\CHAR benötigt 1 Byte pro Zeichen 
 \\VARCHAR benötigt 1 Byte zusätzlich pro Spalte
-%next Kapitel 4
+\chapter{Logisches (relationales) Modell}
+\section{Überblick Transformation}
+\subsection{T1: Regel für Entitätstypen}
+Jeder Entitätstyp wird im RDBM zu einer Tabelle
+\\Attribute werden zu Spalten
+\subsection{T1: regel für Beziehungstypen}
+Beziehungstypen werden über \textbf{Fremdschlüssel} modelliert
+\\Fremdschlüssel werden mit Pfeilen dargestellt.
+\\Zusammengesetzte Schlüssel werden mit "+" dargestellt.
+\\Primärschlüssel werden unterstrichen
+\subsection{Regeln}
+\textbf{UNIQUE}: Attributwert darf nur einmal in der Tabelle vorkommen
+\\\textbf{NOT NULL}: Attributwert darf nicht ausgelassen werden
+\section{Duale und rekursive Beziehungstypen}
+\subsection{1:1 Beziehugnstypen}
+\includegraphics[width=0.9\textwidth]{"graphics/1:1"}
+\dots (Please read this in Script)
+\chapter{Normalformen}
+\section{Überblick Normalisierung}
+Gesucht sind objektive Qualitätskriterien zur Erstellung von Modellen
+\\\includegraphics[width=0.9\textwidth]{"graphics/Normalisierung"}
+\section{Erste Normalform}
+\subsection{Komplexe Eigenschaften}
+Mehrere Werte gleichzeitig für ein Attribut einer Entität
+\\Mehrwertiges Attribut (Telefonnummer)
+\\Zusammengesetztes Attribut
+\subsection{1. Normalform}
+Überführen der Unnormalisierten Form in die 1NF
+\\Bei mehrwertigen Attribut $\rightarrow$ Einführung von eigenen Attributen
+\\Bei multiplen Eigenschaften $\rightarrow$ Einführung von "stark redundanten" Tupeln
+\\\textbf{Anomalien durch Redundanz}
+\begin{itemize}
+  \item Einfügeanomalie: Neuer Lieferant nicht ohne mind. einen Artikel einfügbar
+  \item Modifikationsanomalie: Änderung der Artikelbezeichnung an mehreren Stellen
+  \item Löschanomalie: Löschen von Artikeln führt zum Löschen der Lieferanten
+\end{itemize}
+\section{Zweite Normalform}
+%5.15
+\section{Dritte Normalform}
+\section{Weitere Normalformen}
 %Grafik einbetten:
 %\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
 \end{document}
