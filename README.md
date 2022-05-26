@@ -3,7 +3,7 @@
 ### Progress:
 
 [MCOM](MCOM) (nothing there yet 🙁)  
-[Rechnernetze](Rechnernetze) (already created some pages - not finished)  
+[Rechnernetze](Rechnernetze) (including "Kapitel 3")  
 [Theoretische Informatik](Theoretische%20Informatik) (now including "Lektion 14")  
-[Datenbanken](Datenbanken) (now including "Kapitel 3")  
+[Datenbanken](Datenbanken) (now including "Kapitel 4")  
 [Vorlage](Vorlage) (template)
