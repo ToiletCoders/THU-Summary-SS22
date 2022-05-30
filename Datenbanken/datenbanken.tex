@@ -9,6 +9,7 @@
 \usepackage{multirow}
 \usepackage{amssymb}
 \usepackage{textcomp}
+\usepackage{microtype}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hypersetup{
@@ -270,8 +271,8 @@ Generelle Regel:
 \pagebreak
 \chapter{Datenbankmodelle}
 \section{Datenbankmodell}
-\textbf{Datenbankmodell}
-\\logisches Beziehungsgebilde, beschreibt die Art und Weise der Verbindung von Datensätzen
+logisches Beziehungsgebilde,
+\\beschreibt die Art und Weise der Verbindung von Datensätzen
 \\\textbf{Traditionelle Datenbankmodelle}
 \begin{itemize}
   \item Hierarchisch: nur einen Elternknoten
@@ -346,8 +347,8 @@ Beziehungstypen werden über \textbf{Fremdschlüssel} modelliert
 \\\textbf{NOT NULL}: Attributwert darf nicht ausgelassen werden
 \section{Duale und rekursive Beziehungstypen}
 \subsection{1:1 Beziehungstypen}
-\includegraphics[width=0.9\textwidth]{"graphics/1zu1"}
-\dots (Please read this in Script)
+\includegraphics[width=0.7\textwidth]{"graphics/1zu1"}
+\\\dots (Please read this in Script)
 \chapter{Normalformen}
 \section{Überblick Normalisierung}
 Gesucht sind objektive Qualitätskriterien zur Erstellung von Modellen
@@ -368,9 +369,29 @@ Mehrere Werte gleichzeitig für ein Attribut einer Entität
   \item Löschanomalie: Löschen von Artikeln führt zum Löschen der Lieferanten
 \end{itemize}
 \section{Zweite Normalform}
-%5.15
+\subsection{Funktionale Abhängigkeit}
+A $\rightarrow$ B ist funktional abhängig von A, A bestimmt B
+\\Kundennummer $\rightarrow$ Vorname, Nachname
+\subsection{2NF}
+Eine Relation ist in zweiter Normalform wenn sie in 1NF ist 
+\\und jedes nicht-Schlüsselattribut vom Schlüssek voll funktional abhängig ist.
+\\\textbf{Merkregel:}
+\\Hat ein Entitätstyp einen nicht-zusammengesetzten Schlüssel (nur ein Attribut als PK), liegt 2NF automatisch vor.
+\subsection{Transformierung}
+\includegraphics[width=0.7\textwidth]{"graphics/2NF"}
 \section{Dritte Normalform}
+\subsection{Transitive Abhängigkeit}
+C ist transitiv abhängig von A ($A \rightarrow B, B \rightarrow C$), wenn
+\begin{itemize}
+  \item Wert von A ist bekannt
+  \item Daraus lässt sich Wert von B bestimmen
+  \item Aus Wert B lässt sich C bestimmen
+\end{itemize}
+\subsection{3NF}
+\includegraphics[width=0.7\textwidth]{"graphics/3NF"}
 \section{Weitere Normalformen}
+\includegraphics[width=0.7\textwidth]{"graphics/weiterNF"}
+%6.0
 %Grafik einbetten:
 %\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
 \end{document}
