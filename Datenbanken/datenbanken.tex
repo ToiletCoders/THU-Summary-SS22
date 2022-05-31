@@ -10,13 +10,13 @@
 \usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage{microtype}
-\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hypersetup{
   colorlinks=false,
   linkbordercolor=blue,
   pdfborderstyle={/S/U/W 0}
 }
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \title{\textbf{Datenbanken}}
 \author{\href{https://github.com/toiletcoders}{\color{black}github/toiletcoders}}
 \date{}
@@ -391,7 +391,6 @@ C ist transitiv abhängig von A ($A \rightarrow B, B \rightarrow C$), wenn
 \includegraphics[width=0.7\textwidth]{"graphics/3NF"}
 \section{Weitere Normalformen}
 \includegraphics[width=0.7\textwidth]{"graphics/weiterNF"}
-%6.0
 \chapter{Structured Query Language (SQL)}
 \section{Einführung in SQL}
 \subsection{Eigenschaften von SQL}
@@ -405,8 +404,68 @@ C ist transitiv abhängig von A ($A \rightarrow B, B \rightarrow C$), wenn
 \subsection{Anlegen von Tabellen}
 \includegraphics[width=0.7\textwidth]{"graphics/anlage-tabelle"}
 \\\includegraphics[width=0.7\textwidth]{"graphics/tabelle-fk"}
+\\\textbf{Reference Option}
+\\\tab \textbf{RESTRICT $|$ CASCADE $|$ SET NULL $|$ NO ACTION}
+\\\begin{itemize}
+  \item RESTRICT $\rightarrow$ Operation verbieten
+  \item CASCADE $\rightarrow$ Operation für Fremdschlüssel auch durchführen
+  \item SET NULL $\rightarrow$ Fremdschlüsselwert Löschen
+  \item NO ACTION $\rightarrow$ Keine Anpassung
+\end{itemize}
+CREATE LIKE $\rightarrow$ erstellt die neue Tabelle und kopiert die Datenstruktur
+\subsection{Ändern von Tabellen}
+\begin{itemize}
+  \item CHANGE $\rightarrow$ CHANGE $<Spaltenname> <Spaltenname_{neu}>$
+  \item ADD $\rightarrow$ ADD $<Spaltenname> <Datentyp> [<Eigenschaft>]$
+  \item DROP $\rightarrow$ DROP COLUMN $<Spaltenname>$
+  \item ADD PRIMARY KEY $\rightarrow$ ADD PRIMARY KEY $<Keyname> (<Spaltenname>)$
+  \item ADD FOREIGN KEY
+  \item DROP FOREIGN KEY
+  \item RENAME TABLE $\rightarrow$ $<Tabellenname> TO <Tabellenname_{neu}>$
+\end{itemize}
+Tipps:
+\\Bei CHANGE and Datentypen können Daten verändert werden!
 \section{Datenmodifikation (DML)}
+\subsection{Datenmanipulation DDL}
+Dient zum Schreiben, Lesen, Ändern und Löschen von Daten
+\\Daten lesen mit SELECT und Form
+\subsection{Einfügen mit INSERT}
+$INSERT INTO <Tabellenname> [(Spaltenliste)]VALUES (Werteliste);$
+\\\includegraphics[width=0.7\textwidth]{"graphics/Insert-Bsp"}
+\subsection{Lesen mit SELECT}
+$SELECT [DISTINCT | ALL]$
+\\${* | [SpaltenAusdruck [AS neuerName]][,...] }$
+\\$FROM Tabelle [ALIAS] [, ...]$
+\\$[WHERE Bedingung]$
+\\$[GROUP BY SpaltenListe]$
+\\$[HAVING Bedingung]$
+\\$[ORDER BY SpaltenListe]$
+\\DISTINCT eliminiert Duplikate
+\subsection{Lesen mit SELECT und DISTINCT}
+DISTINCT eliminiert Duplikate
+\\SELECT DISITINCT Beispielspalte FROM Beispieltabelle;
+\subsection{Lesen mit SELECT und AS}
+AS benennt die neuberechnete Spalte Umprogrammieren
+\subsection{Lesen mit SELECT und WHERE}
+WHERE filtert Zeilen
+\\BETWEEN lässt Werte zwischen zwei Werten finden
 \section{Aggregatfunktionen}
+\subsection{COUNT}
+Anzahl der Einträge zählen
+\\$SELECT COUNT(*) AS Expensive$
+\\$FROM Kassenbon1NF$
+\\$WHERE Preis > 100;$
+\subsection{COUNT DISTINCT}
+DISTINCT elminiert wieder die Duplikate
+\subsection{SUM}
+SUM(Preis) zählt alle Einträge in Preis zusammen
+\chapter{Erweiterte Abfragen mit SQL}
+\section{Unterabfragen}
+\subsection{Einfache Subselects}
+\subsection{Geschachtelte Abfragen}
+\section{Verbundabfrage (JOINs)}
+\section{Outer JOINs}
+\section{Mengenoperationen}
 %6.21
 %Grafik einbetten:
 %\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
