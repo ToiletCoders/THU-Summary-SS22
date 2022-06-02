@@ -461,12 +461,87 @@ DISTINCT elminiert wieder die Duplikate
 SUM(Preis) zählt alle Einträge in Preis zusammen
 \chapter{Erweiterte Abfragen mit SQL}
 \section{Unterabfragen}
-\subsection{Einfache Subselects}
-\subsection{Geschachtelte Abfragen}
+SQL Statements können eingebettete SELECTs enthalten
+\\\includegraphics[width=0.7\textwidth]{"graphics/Unterabfrage1"}
+\subsection{Regeln für Unterabfragen}
+\begin{itemize}
+  \item ORDER BY Klauseln
+  \\\textbf{nicht} in Unterabfragen
+  \\nur in äußerstem SELECT-Statement
+  \item Spaltenliste der Unterabfrage
+  \\nur \textbf{ein einziger} Spaltenname als Ergebnis
+  \\Ausnahme: EXISTS
+  \item Bei Vergleichen: Unterabfrage steht \textbf{rechts}
+\end{itemize}
 \section{Verbundabfrage (JOINs)}
+\subsection{Einfacher JOIN}
+\begin{itemize}
+  \item Kunden und Mitarbeiter
+  \\\textbf{SELECT} Name, Nachname, Vorname
+  \\\textbf{FROM} Kunde, Mitarbeiter
+  \\\textbf{WHERE} Kunde.idMitarbeiter = Mitarbeiter.idMitarbeiter;
+  \item Vorgehen
+  \\Nur Kunden mit zugeordnetem Mitarbeiter erscheinen im Ergebnis
+  \\Kunden ohne Mitarbeiter (NULL) erscheinen nicht
+  \\Verbund hier über Fremdschlüssel
+  \item Alternativen
+  \begin{itemize}
+    \item Verwendung von Tabellen-Alias
+    \\\textbf{SELECT} k.Name, m.Nachname, m.Vorname
+    \\\textbf{FROM} Kunde k, Mitarbeiter m
+    \\\textbf{WHERE} k.idMitarbeiter = m.idMitarbeiter;
+    \item Alternative mit Schlüsselwörtern JOIN und ON
+    \\\textbf{SELECT} k.Name, m.Nachname, m.Vorname
+    \\\textbf{FROM} Kunde k \textbf{JOIN} Mitarbeiter m
+    \\\textbf{ON} k.idMitarbeiter = m.idMitarbeiter;
+  \end{itemize}
+\end{itemize}
+\subsection{NATURAL JOIN}
+"Natürlicher" JOIN
+\begin{itemize}
+  \item Verwendung aller gemeinsamen Attribute
+  \item Vergleich auf Gleichheit
+  \item Zumeist: Abgleich von Fremd- und Primärschlüsselattributen
+\end{itemize}
+wegen Häufigkeit eigenes Schlüsselwort: NATURAL JOIN
+\\\textbf{SELECT} k.Name,b.Bestelldatum
+\\\textbf{FROM} Kunde k \textbf{NATURAL JOIN} Bestellung b;
+\subsection{VIEWS: Virtuelle Tabellen}
+Virtuelle Tabellen 
+\\Anlegen:
+\\\tab \textbf{CREATE VIEW} Viewname \textbf{AS (SELECT} Statement);
+\\Views können wie normale Tabellen verwendet werden
 \section{Outer JOINs}
+\begin{itemize}
+  \item Innerer JOIN:
+  \\\tab Zeile ohne Entsprechung im ON fehlt komplett im Ergebnis
+  \\\tab Anstatt JOIN kann auch INNER JOIN geschrieben werden
+  \item Äußere Joins:
+  \\\tab Zeile mit Entsprechung im ON erscheint
+  \\\tab Zeile ohne Entsprechung in der anderen Tabelle erscheint auch
+  \\\tab Fehlende Werte sind NULL
+  \\\tab Nicht mit CROSS JOIN verwechseln
+  \item Varianten
+  \\\includegraphics[width=0.7\textwidth]{"graphics/JOINS"}
+\end{itemize}
+\subsection{Existenzabfrage: EXISTS}
+wahr, wenn Unterabfrage nicht leeres Ergebnis Lieferant
+\\falsch, wenn kein Treffer in Unterabfrage
+\\Beispiel:
+\\\includegraphics[width=0.7\textwidth]{"graphics/EXISTS"}
 \section{Mengenoperationen}
-%6.21
+\includegraphics[width=0.7\textwidth]{"graphics/MengenOP"}
+\begin{itemize}
+  \item UNION
+  \\\tab Vereinigungsmenge $A \cup B$
+  \\\tab bei Tabellen: alle Datensätze aus A und B aneinanderhängen
+  \item INTERSECT
+  \\\tab Schnittmenge $A \cap B$
+  \\\tab bei Tabellen: alle Datensätze, die in A und B vorkommen
+  \item EXCEPT
+  \\\tab Schnittmenge A \textbackslash B
+  \\\tab bei Tabellen: alle Datensätze aus A, die aber nicht in B vorkommen
+\end{itemize}
 %Grafik einbetten:
 %\includegraphics[width=0.7\textwidth]{"graphics/name-der-grafik"}
 \end{document}
