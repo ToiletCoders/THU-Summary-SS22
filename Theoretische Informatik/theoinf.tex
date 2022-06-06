@@ -516,7 +516,7 @@ Zu jedem $\epsilon$-NEA kann ein regulärer Ausdruck konstruiert werden.
 \includegraphics[width=0.6\textwidth]{"graphics/Eliminationsregeln"}
 \includegraphics[width=0.6\textwidth]{"graphics/Eliminationsverfahren"}
 \section{Chomksy-Typ-3-Grammatiken und endliche Automaten}
-\textbf{$\epsilon$-NEA für Chomksy-Typ-3-Grammatiken bilden}
+\textbf{$\epsilon$-NEA für Chomsky-Typ-3-Grammatiken bilden}
 \\\tab Der $\epsilon$-NEA wird in folgender Weise definiert:
 \begin{itemize}
     \item Zustände: Menge der nichtterminalen Symbole der Grammatik
@@ -531,4 +531,25 @@ Zu jedem $\epsilon$-NEA kann ein regulärer Ausdruck konstruiert werden.
     \item Für jeden Zustandsübergang $\delta (z_1,a)=z_2$ wird eine Produktion $z_1 \rightarrow a z_2$ gebildet
     \item Für jeden Endzustand z wird eine $\epsilon$-Produktion eingeführt: $z \rightarrow \epsilon$
 \end{itemize}
+\section{Klasse der regulären Sprache}
+\textbf{Definition:}
+\\\tab Eine Sprache L heißt regulär, wenn es einen regulären Ausdruck R gibt,
+\\\tab der die Sprache L beschreibt, d.h. für den $L=L(R)$ gilt.
+\\\textbf{Eigenschaft:}
+\\\tab Klasse der \textbf{regulären Sprachen}
+\\\tab = Klasse der von \textbf{regulären Ausdrücken} dargestellten Sprachen
+\\\tab = Klasse der von \textbf{DEAs} akzeptierten Sprachen 
+\\\tab = Klasse der von \textbf{$\epsilon$-NEAs} akzeptierten Sprachen
+\\\tab = Klasse der durch \textbf{Chomsky-Typ-3-Grammatiken} generierbaren Sprachen
+\\\includegraphics[width=0.6\textwidth]{"graphics/Eigenschaften"}
+\section{Abschlusseigenschaften regulärer Sprachen}
+Sind $L_1$ und $L_2$ reguläre Sprachen, dann sind auch folgende Sprachen regulär:
+\\\begin{tabular}{ c c }
+    $L_1 \cup L_2$ & Vereinigung der Sprachen \\ 
+    $L_1 \cdot L_2$ & Konkatenation der Sprachen \\  
+    $L_{1}^{*}$ & Kleene'sche-Hülle der Sprache \\
+    $L_1 \cap L_2$ & Durchschnitt der Sprachen \\  
+    $\overline{L_1}$ & Komplement der Sprache (alle Wörter, die nicht in $L_1$ enthalten sind)      
+   \end{tabular}
+
 \end{document}
