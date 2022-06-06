@@ -510,5 +510,25 @@ Induktive Konstruktion eines $\epsilon$-NEA zu regulärem Ausdruck
     \item Eine endliche Menge $R=\{r_1,\dots,r_k\} $ von Konstruktionsregeln
     \\Eine induktiv definierte Menge besteht aus allen Elementen, die durch Konstuktionsschritte konstruiert werden können.
 \end{itemize}
-%Lektion 15:
+\section{Umwandung von $\epsilon$-NEAs in reguläre Ausdrücke}
+Zu jedem $\epsilon$-NEA kann ein regulärer Ausdruck konstruiert werden.
+\subsection{Eliminationsregeln \& Eliminationsverfahren}
+\includegraphics[width=0.6\textwidth]{"graphics/Eliminationsregeln"}
+\includegraphics[width=0.6\textwidth]{"graphics/Eliminationsverfahren"}
+\section{Chomksy-Typ-3-Grammatiken und endliche Automaten}
+\textbf{$\epsilon$-NEA für Chomksy-Typ-3-Grammatiken bilden}
+\\\tab Der $\epsilon$-NEA wird in folgender Weise definiert:
+\begin{itemize}
+    \item Zustände: Menge der nichtterminalen Symbole der Grammatik
+    \item Startzustand: Startsymbol der Grammatik
+    \item Für jede Produktion $A \rightarrow aB$ wird ein entsprechender Zustandsübergang definiert
+    \item Gibt es eine Produktion $A \rightarrow \epsilon$, dann ist der Zustand A ein Endzustand
+\end{itemize}
+\textbf{Definition: Chomsky-Typ-3-Grammatik}
+\begin{itemize}
+    \item Als Zustände des DEA werden als nichtterminale Symbole der Grammatik verwendet
+    \item Der Startzustand ist das Startsymbol
+    \item Für jeden Zustandsübergang $\delta (z_1,a)=z_2$ wird eine Produktion $z_1 \rightarrow a z_2$ gebildet
+    \item Für jeden Endzustand z wird eine $\epsilon$-Produktion eingeführt: $z \rightarrow \epsilon$
+\end{itemize}
 \end{document}
