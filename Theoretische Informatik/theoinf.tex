@@ -551,5 +551,21 @@ Sind $L_1$ und $L_2$ reguläre Sprachen, dann sind auch folgende Sprachen regul�
     $L_1 \cap L_2$ & Durchschnitt der Sprachen \\  
     $\overline{L_1}$ & Komplement der Sprache (alle Wörter, die nicht in $L_1$ enthalten sind)      
    \end{tabular}
-
+\chapter{Kellerautomaten}
+\includegraphics[width=0.7\textwidth]{"graphics/Kellerautomat-Aufbau"}
+\section{Nichtdeterministische Kellerautomaten}
+\textbf{Deinition:}
+\\Ein (nichtdeterministischer) \textbf{Kellerautomat} $K=(Z,\sum,\Gamma,\Delta,z_0,k_0,E)$ ist definiert durch:
+\\\tab Z \tab endliche Menge von Zuständen
+\\\tab $\sum$ \tab endliches Eingabealphabet
+\\\tab $\Gamma$ \tab endliches Kelleralphabet
+\\\tab $\Delta$ \tab Zustandsübergangsrelation
+\\\tab $z_0 \in Z$ \tab Startzustand
+\\\tab $k_0 \in \Gamma$ \tab Kellerstartsymbol
+\\\tab $E \subseteq Z$ \tab Menge der Endzustände
+\subsection{Sprache eines Kellerautomaten}
+\textbf{Definition:}
+\\Die vom Kellerautomat K \textbf{akzeptierte Sprache L(K)} ist \\$L(K)=\{w \in \sum^{*}|$K akzeptiert w$\}$.
+\section{Kellerautomaten und kontextfreie Grammatiken}
+%Lektion 17 - 277
 \end{document}
