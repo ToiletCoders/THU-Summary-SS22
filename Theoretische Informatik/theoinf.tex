@@ -554,7 +554,7 @@ Sind $L_1$ und $L_2$ reguläre Sprachen, dann sind auch folgende Sprachen regul�
 \chapter{Kellerautomaten}
 \includegraphics[width=0.7\textwidth]{"graphics/Kellerautomat-Aufbau"}
 \section{Nichtdeterministische Kellerautomaten}
-\textbf{Deinition:}
+\textbf{Definition:}
 \\Ein (nichtdeterministischer) \textbf{Kellerautomat} $K=(Z,\sum,\Gamma,\Delta,z_0,k_0,E)$ ist definiert durch:
 \\\tab Z \tab endliche Menge von Zuständen
 \\\tab $\sum$ \tab endliches Eingabealphabet
@@ -576,5 +576,40 @@ Ein nichtdeterministischer Kellerautomat akzeptiert die gleiche Sprache, wie die
 \\ Eine Sprache L heißt deterministisch kontextfrei, falls es einen det. Kellerautomaten gibt, der die Sprache L akzeptiert. 
 \\ Die det. kontextfreie Sprachen sind eine echte Teilmenge der kontextfreien Sprachen.
 \chapter{Effiziente Top-Down-Syntaxanalyse}
-
+\subsection{Effiziente Syntaxanalyse}
+\includegraphics[width=0.7\textwidth]{"graphics/vorrausschau"}
+\subsection{Grammatik-Eigenschaften}
+\textbf{nullable(A)} Kann das nichtterminale Symbol A zum leeren Wort abgeleitet werden?
+\\\textbf{First(A)} Mit welchen terminalen Symbolen kann ein Wort beginnen, das aus dem Nichtterminal A abgeleitet wird?
+\\\textbf{Follow(A)} Welche terminale Symbole können nach dem Teilwort folgen, das aus A abgeleitet wird?
+\subsection{nullable-Eigenschaft}
+Bei einer kontextfreien Grammatik $G = (N,T,P,S)$ ist die Eigenschaft \textbf{nullable} für ein Nichtterminal A genau dann wahr, wenn A zum leeren Wort abgeleitet werden kann.
+\\d.h. $A \rightarrow \epsilon$
+\subsection{First-Mengen}
+Für die nichtterminalen Symbole $A \in N$ einer kontextfreien Grammatik sind die First-Mengen folgendermaßen definiert.
+\\\textbf{First(A)} $= \{a \in T |$ es existiert ein $w \in (N \cup T)^*$, so dass $ A \rightarrow aw \}$
+\subsection{Follow-Mengen}
+Gegeben sei eine kontextfreie Grammatik. Für die nichtterminalen Symbole $A \in N$ sind die Follow-Mengen folgendermaßen definiert:
+\\\textbf{Follow(A)}$= \{b \in T |$ es existieren Symbolfolgen $u \in (N \cup T)^*,w \in (N \cup T)^*$, so dass  $S \rightarrow uAbw \}$
+\subsection{Bestimmung der Vorausschau-Tabelle}
+Für jedes nichtterminale Symbol A der Grammatik gibt es eine Zeile.
+\\Für jedes terminale Symbol a gibt es eine Spalte. Außerdem gibt es eine Spalte für das Eingabeendesymbol \$.
+\section{LL(1)-Grammatiken}
+\textbf{Definition}
+\\Grammatiken, deren Vorausschautabelle keine Mehrfacheinträge enthalten, heißen \textbf{LL(1)-Grammatiken}.
+\\\textbf{Namensgebung}
+\\ein Zeichen Vorausschau
+\\Linksableitung wird erzeugt
+\\Eingabe wird von Links nach rechts analysiert
+\section{Implementierung effizienter Top-Down-Analyse}
+\subsection{Tabellengesteuerter Top-Down-Parser mit Vorausschau}
+\includegraphics[width=0.7\textwidth]{"graphics/tabellen-parser"}
+\subsection{Top-Down-Analyse mittels rekursivem Abstieg}
+\begin{itemize}
+    \item Fpr jedes nichtterminale Symbol wird eine Methode implementiert, die prüft, ob der folgende Teil der Eingabe entsprechend aufgebaut ist.
+    \item Wird ein nichtterminales Symbol erwartet, wird die entsprechende Methode aufgerufen.
+    \item Es werden zwei Hilfsfunktionen verwendet
+    \\\tab \textbf{lookahead()}: Liefert Symbol an aktueller Eingabeposition
+    \\\tab  \textbf{consume(ch)}: Vergleicht das erwartete Zeichen ch mit Zeichen an der aktuellen Eingabeposition. Übereinstimmung=Fortsetzung sonst Abbruch
+\end{itemize}
 \end{document}
