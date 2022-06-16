@@ -7,3 +7,9 @@
 [Theoretische Informatik](Theoretische%20Informatik) (now including "Lektion 20")  
 [Datenbanken](Datenbanken) (now including "Kapitel 7")  
 [Vorlage](Vorlage) (template)
+
+
+### Releases:
+
+[Theoretische Informatik](https://github.com/ToiletCoders/THU-Summary-SS22/releases/tag/TInf-Kap20)
+[Datenbanken](https://github.com/ToiletCoders/THU-Summary-SS22/releases/tag/DaBa-Kap7)
