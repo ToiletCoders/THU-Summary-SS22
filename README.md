@@ -11,5 +11,5 @@
 
 ### Releases:
 
-[Theoretische Informatik](https://github.com/ToiletCoders/THU-Summary-SS22/releases/tag/TInf-Kap20)
+[Theoretische Informatik](https://github.com/ToiletCoders/THU-Summary-SS22/releases/tag/TInf-Kap20)  
 [Datenbanken](https://github.com/ToiletCoders/THU-Summary-SS22/releases/tag/DaBa-Kap7)
