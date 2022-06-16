@@ -4,6 +4,6 @@
 
 [MCOM](MCOM) (nothing there yet 🙁)  
 [Rechnernetze](Rechnernetze) (including "Kapitel 3")  
-[Theoretische Informatik](Theoretische%20Informatik) (now including "Lektion 14")  
+[Theoretische Informatik](Theoretische%20Informatik) (now including "Lektion 20")  
 [Datenbanken](Datenbanken) (now including "Kapitel 7")  
 [Vorlage](Vorlage) (template)
